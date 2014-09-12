@@ -3,16 +3,16 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Get running OS
 function! GetRunningOS()
-  if has("win32")
-    return "win"
-  endif
-  if has("unix")
-    if system('uname')=~'Darwin'
-      return "mac"
-    else
-      return "unix"
+    if has("win32")
+        return "win"
     endif
-  endif
+    if has("unix")
+        if system('uname')=~'Darwin'
+            return "mac"
+        else
+            return "unix"
+        endif
+    endif
 endfunction
 
 let os=GetRunningOS()
@@ -30,8 +30,8 @@ set nocompatible
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
 " Speed up vim
-set lazyredraw
-set synmaxcol=200
+" set lazyredraw
+set synmaxcol=1024
 " Slash
 set shellslash                    " Use / instead of \ in Windows
 set wildmenu
@@ -53,7 +53,9 @@ set smartindent
 
 " keep your code clean and easy to read
 set linebreak
-set textwidth=120
+" textwidth will force insert EOL. prefer to use a guide line instead (colorcolumn)
+" set textwidth=120
+set colorcolumn=120
 
 set ru
 if has("gui_running")
