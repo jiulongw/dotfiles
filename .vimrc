@@ -84,6 +84,7 @@ syntax on
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
+autocmd FileType xml :setlocal sw=2 ts=2 sts=2
 set et
 set smarttab
 
@@ -132,4 +133,18 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Misc mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctrl+N => open new tab with current directory.
+map <C-n> :Texplore<cr>
+" Ctrl+S => save file
+map <C-s> :w<cr>
+imap <C-s> <C-o>:w<cr>
+vmap <C-s> :<C-w>:w<cr>
+
+au FileType c setl ofu=ccomplete#Complete
+au FileType html,xhtml setl ofu=htmlcomplete#CompleteTags
+au FileType css setl ofu=csscomplete#CompleteCSS
 
