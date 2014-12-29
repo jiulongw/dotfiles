@@ -66,6 +66,7 @@ if has("gui_running")
   if os=="win"
     set guifont=Consolas:h10:cDEFAULT
     set guifontwide=NSimSun:h10:cDEFAULT
+    au GUIEnter * simalt ~x
   else
     set guifont=Droid\ Sans\ Mono\ 10
     set guifontwide=Droid\ Sans\ Mono\ 10
@@ -137,14 +138,22 @@ map <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ctrl+N => open new tab with current directory.
-map <C-n> :Texplore<cr>
+" Ctrl+N => open new window with current directory.
+map <C-n> :Vexplore!<cr>
 " Ctrl+S => save file
 map <C-s> :w<cr>
 imap <C-s> <C-o>:w<cr>
 vmap <C-s> :<C-w>:w<cr>
 
+" Auto completion
 au FileType c setl ofu=ccomplete#Complete
 au FileType html,xhtml setl ofu=htmlcomplete#CompleteTags
 au FileType css setl ofu=csscomplete#CompleteCSS
+
+" Commenting
+au FileType c,cpp,java,scope    let b:comment_leader='// '
+au FileType sh,ruby,python      let b:comment_leader='# '
+au FileType vim                 let b:comment_leader='" '
+noremap <silent> <leader>cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohl<CR>
+noremap <silent> <leader>cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohl<CR>
 
