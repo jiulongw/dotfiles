@@ -84,7 +84,10 @@ syntax on
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-autocmd FileType xml :setlocal sw=2 ts=2 sts=2
+
+" Tab setting overrides
+autocmd FileType xml setlocal sw=2 ts=2 sts=2
+
 set et
 set smarttab
 
@@ -139,6 +142,7 @@ map <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctrl+N => open new tab with current directory.
 map <C-n> :Texplore<cr>
+
 " Ctrl+S => save file
 map <C-s> :w<cr>
 imap <C-s> <C-o>:w<cr>
