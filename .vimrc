@@ -145,6 +145,12 @@ map <C-s> :w<cr>
 imap <C-s> <C-o>:w<cr>
 vmap <C-s> :<C-w>:w<cr>
 
+" Disable arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
 " Auto completion
 au FileType c setl ofu=ccomplete#Complete
 au FileType html,xhtml setl ofu=htmlcomplete#CompleteTags
