@@ -85,7 +85,10 @@ syntax on
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-autocmd FileType xml :setlocal sw=2 ts=2 sts=2
+
+" Tab setting overrides
+autocmd FileType xml setlocal sw=2 ts=2 sts=2
+
 set et
 set smarttab
 
