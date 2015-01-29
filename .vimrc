@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -22,10 +24,9 @@ let g:mapleader = ","
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
-" Scroll 3 lines
-set scrolloff=3
 " We are not accient
 set nocompatible
+
 " Show “invisible” characters
 set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
@@ -34,7 +35,6 @@ set list
 set synmaxcol=1024
 " Slash
 set shellslash                    " Use / instead of \ in Windows
-set wildmenu
 set wildignorecase
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.rar,*.tar.*
 set hidden                        " Change buffer - without saving
@@ -57,11 +57,11 @@ set linebreak
 " set textwidth=120
 set colorcolumn=120
 
-set ru
 if has("gui_running")
   set guioptions-=T
   set guioptions-=r
   set guioptions-=l
+  set guioptions-=m
 
   if os=="win"
     set guifont=Consolas:h10:cDEFAULT
@@ -71,29 +71,24 @@ if has("gui_running")
     set guifont=Droid\ Sans\ Mono\ 10
     set guifontwide=Droid\ Sans\ Mono\ 10
   endif
-
-  colo desert
 endif
-set laststatus=2
-set showcmd
+
+set background=dark
+" colorscheme solarized
+colorscheme molokai
+
+set cursorline
 set showmode
 set number
-filetype plugin indent on
-syntax on
 
 " tab settings
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-
-" Tab setting overrides
-autocmd FileType xml setlocal sw=2 ts=2 sts=2
-
-set et
-set smarttab
+set expandtab
+autocmd FileType xml :setlocal sw=2 ts=2 sts=2
 
 " Searching
-set incsearch
 set ignorecase
 set smartcase
 set hlsearch
@@ -165,4 +160,5 @@ au FileType sh,ruby,python      let b:comment_leader='# '
 au FileType vim                 let b:comment_leader='" '
 noremap <silent> <leader>cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohl<CR>
 noremap <silent> <leader>cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohl<CR>
+
 
