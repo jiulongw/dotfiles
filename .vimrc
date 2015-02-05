@@ -101,7 +101,7 @@ set stal=2
 " => Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " W to save as root
-cnoremap W w !sudo tee % > /dev/null
+" cnoremap W w !sudo tee % > /dev/null
 " Map copy and paste with system clipboard register
 map <C-y> "+y
 vmap <C-y> "+y
@@ -148,6 +148,15 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+" No search highlight
+noremap <C-h> :noh<cr>
+
+" buffer navigation
+nnoremap <silent> [b :bprevious<cr>
+nnoremap <silent> ]b :bnext<cr>
+nnoremap <silent> [B :bfirst<cr>
+nnoremap <silent> ]B :blast<cr>
 
 " Auto completion
 au FileType c setl ofu=ccomplete#Complete
