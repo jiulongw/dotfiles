@@ -158,6 +158,12 @@ nnoremap <silent> ]b :bnext<cr>
 nnoremap <silent> [B :bfirst<cr>
 nnoremap <silent> ]B :blast<cr>
 
+" tab navigation
+nnoremap <silent> [t :tabprevious<cr>
+nnoremap <silent> ]t :tabnext<cr>
+nnoremap <silent> [T :tabfirst<cr>
+nnoremap <silent> ]T :tablast<cr>
+
 " Auto completion
 au FileType c setl ofu=ccomplete#Complete
 au FileType html,xhtml setl ofu=htmlcomplete#CompleteTags
