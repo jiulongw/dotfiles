@@ -67,6 +67,9 @@ if has("gui_running")
     set guifont=Consolas:h10:cDEFAULT
     set guifontwide=NSimSun:h10:cDEFAULT
     au GUIEnter * simalt ~x
+  elseif os=="mac"
+    set guifont=Monaco:h11
+    set guifontwide=Songti\ SC:h12
   else
     set guifont=Droid\ Sans\ Mono\ 10
     set guifontwide=Droid\ Sans\ Mono\ 10
