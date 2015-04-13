@@ -35,7 +35,11 @@ set list
 set synmaxcol=1024
 " Slash
 set shellslash                    " Use / instead of \ in Windows
-set wildignorecase
+
+if v:version > 703
+  set wildignorecase
+endif
+
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.rar,*.tar.*
 set hidden                        " Change buffer - without saving
 " Set backspace config
