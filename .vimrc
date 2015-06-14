@@ -159,12 +159,6 @@ noremap <Right> <NOP>
 " No search highlight
 noremap <C-h> :noh<cr>
 
-" buffer navigation
-nnoremap <silent> [b :bprevious<cr>
-nnoremap <silent> ]b :bnext<cr>
-nnoremap <silent> [B :bfirst<cr>
-nnoremap <silent> ]B :blast<cr>
-
 " tab navigation
 nnoremap <silent> [t :tabprevious<cr>
 nnoremap <silent> ]t :tabnext<cr>
