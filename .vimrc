@@ -157,7 +157,7 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " No search highlight
-noremap <C-h> :noh<cr>
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " tab navigation
 nnoremap <silent> [t :tabprevious<cr>
