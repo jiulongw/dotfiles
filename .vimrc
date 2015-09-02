@@ -159,22 +159,3 @@ noremap <Right> <NOP>
 " No search highlight
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
-" tab navigation
-nnoremap <silent> [t :tabprevious<cr>
-nnoremap <silent> ]t :tabnext<cr>
-nnoremap <silent> [T :tabfirst<cr>
-nnoremap <silent> ]T :tablast<cr>
-
-" Auto completion
-au FileType c setl ofu=ccomplete#Complete
-au FileType html,xhtml setl ofu=htmlcomplete#CompleteTags
-au FileType css setl ofu=csscomplete#CompleteCSS
-
-" Commenting
-au FileType c,cpp,java,scope    let b:comment_leader='// '
-au FileType sh,ruby,python      let b:comment_leader='# '
-au FileType vim                 let b:comment_leader='" '
-noremap <silent> <leader>cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohl<CR>
-noremap <silent> <leader>cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohl<CR>
-
-
