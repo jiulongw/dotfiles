@@ -159,3 +159,7 @@ noremap <Right> <NOP>
 " No search highlight
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
+" Treat *.md as markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+let g:markdown_fenced_languages = ['css', 'javascript', 'json=javascript', 'xml', 'html', 'python', 'java', 'c', 'cpp', 'cs']
+
