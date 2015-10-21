@@ -126,8 +126,8 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Do :help cope if you are unsure what cope is. It's super useful!
 map <leader>co :botright cope<cr>
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+map <leader>cn :cn<cr>
+map <leader>cp :cp<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -161,5 +161,14 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " Treat *.md as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.cmd.md nnoremap <silent> <F6> :exec '!'.getline('.')<CR>
 let g:markdown_fenced_languages = ['css', 'javascript', 'json=javascript', 'xml', 'html', 'python', 'java', 'c', 'cpp', 'cs']
+
+let g:ctrlp_root_markers=['TAGS']
+let g:ctrlp_map='c-0' "vim cannot map ctrl-0, just to turn off ctrl-p which is used to paste from clipboard.
+map <leader>p :CtrlP<cr>
+map <leader>bb :CtrlPBuffer<cr>
+map <leader>bs :CtrlPMRU<cr>
+
+source ~/.twitter.vim
 
