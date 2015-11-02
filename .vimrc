@@ -150,8 +150,6 @@ map <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ctrl+N => open new window with current directory.
-map <C-n> :Vexplore!<cr>
 " Ctrl+S => save file
 map <C-s> :w<cr>
 imap <C-s> <C-o>:w<cr>
@@ -171,13 +169,9 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 let g:markdown_fenced_languages = ['css', 'javascript', 'json=javascript', 'xml', 'html', 'python', 'java', 'c', 'cpp', 'cs']
 
-let g:ctrlp_root_markers=['TAGS']
+let g:ctrlp_root_markers=['TAGS', '.ctrlp-root']
 let g:ctrlp_map='c-0' "vim cannot map ctrl-0, just to turn off ctrl-p which is used to paste from clipboard.
 map <leader>p :CtrlP<cr>
 map <leader>bb :CtrlPBuffer<cr>
 map <leader>bs :CtrlPMRU<cr>
-
-if !empty(glob("~/.twitter.vim"))
-    source ~/.twitter.vim
-endif
 
