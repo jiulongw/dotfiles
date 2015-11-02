@@ -17,3 +17,7 @@ source $slim_path/keys.zsh
 source $slim_path/completion.zsh
 source $slim_path/aliases.zsh
 
+if [[ -a ~/.local.zsh ]]; then
+  source ~/.local.zsh
+fi
+
