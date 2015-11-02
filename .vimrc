@@ -94,6 +94,8 @@ set tabstop=4
 set softtabstop=4
 set expandtab
 autocmd FileType xml :setlocal sw=2 ts=2 sts=2
+autocmd FileType html :setlocal sw=2 ts=2 sts=2
+autocmd FileType javascript :setlocal sw=2 ts=2 sts=2
 
 " Searching
 set ignorecase
@@ -102,7 +104,10 @@ set hlsearch
 
 " Specify the behavior when switching between buffers
 set switchbuf=usetab
-set stal=2
+set stal=1
+
+set splitright
+set splitbelow
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Shortcuts
@@ -114,6 +119,8 @@ map <C-y> "+y
 vmap <C-y> "+y
 map <C-p> "+p
 vmap <C-p> "+p
+nmap Y y$
+nmap <C-Y> "+y$
 
 " Map to enter ; end of line
 inoremap <leader>; <esc>A;
@@ -161,7 +168,7 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " Treat *.md as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-autocmd BufNewFile,BufReadPost *.cmd.md nnoremap <silent> <F6> :exec '!'.getline('.')<CR>
+
 let g:markdown_fenced_languages = ['css', 'javascript', 'json=javascript', 'xml', 'html', 'python', 'java', 'c', 'cpp', 'cs']
 
 let g:ctrlp_root_markers=['TAGS']
