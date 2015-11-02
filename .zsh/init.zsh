@@ -17,4 +17,3 @@ source $slim_path/keys.zsh
 source $slim_path/completion.zsh
 source $slim_path/aliases.zsh
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
