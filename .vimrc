@@ -86,6 +86,7 @@ colorscheme molokai
 
 set cursorline
 set showmode
+set relativenumber
 set number
 
 " tab settings
@@ -120,7 +121,6 @@ vmap <C-y> "+y
 map <C-p> "+p
 vmap <C-p> "+p
 nmap Y y$
-nmap <C-Y> "+y$
 
 " Map to enter ; end of line
 inoremap <leader>; <esc>A;
@@ -174,4 +174,6 @@ let g:ctrlp_map='c-0' "vim cannot map ctrl-0, just to turn off ctrl-p which is u
 map <leader>p :CtrlP<cr>
 map <leader>bb :CtrlPBuffer<cr>
 map <leader>bs :CtrlPMRU<cr>
+
+nmap <silent> <C-n> :NERDTreeToggle<CR>
 
