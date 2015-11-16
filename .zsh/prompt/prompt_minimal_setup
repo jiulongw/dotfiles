@@ -12,7 +12,7 @@
 function +vi-git_status {
   # Check for untracked files or updated submodules since vcs_info does not.
   if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-    hook_com[unstaged]='%F{red}●%f'
+    hook_com[unstaged]='%F{red}*%f'
   fi
 }
 
@@ -34,17 +34,35 @@ function prompt_minimal_setup {
 
   # Set vcs_info parameters.
   zstyle ':vcs_info:*' enable git
-  zstyle ':vcs_info:*' check-for-changes false
-  zstyle ':vcs_info:*' stagedstr '%F{green}●%f'
-  zstyle ':vcs_info:*' unstagedstr '%F{yellow}●%f'
-  zstyle ':vcs_info:*' formats ' - [%b%c%u]'
-  zstyle ':vcs_info:*' actionformats " - [%b%c%u|%F{cyan}%a%f]"
+  zstyle -e ':vcs_info:*' check-for-changes 'cfc && reply=(true) || reply=(false)'
+  zstyle ':vcs_info:*' stagedstr '%F{green}*%f'
+  zstyle ':vcs_info:*' unstagedstr '%F{yellow}*%f'
+
+  zstyle ':vcs_info:*' formats ' [%b%c%u]'
+  zstyle ':vcs_info:*' actionformats " [%b%c%u|%F{cyan}%a%f]"
   zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b|%F{cyan}%r%f'
-  # zstyle ':vcs_info:git*+set-message:*' hooks git_status
+  zstyle -e ':vcs_info:git*+set-message:*' hooks 'cfc && reply=(git_status) || reply=()'
 
   # Define prompts.
-  PROMPT='%2~${vcs_info_msg_0_} » '
+  PROMPT='%m %1~${vcs_info_msg_0_} $ '
   RPROMPT=''
 }
 
+# Exclude some huge git repo when checking for changes to avoid prompt lagging.
+function cfc() {
+  local d
+  local -a nocfc_dirs
+  nocfc_dirs=(
+    ${HOME}/workspace/source/
+  )
+
+  for d in ${nocfc_dirs}; do
+    d=${d%/##}
+    [[ $PWD == $d(|/*) ]] && return false
+  done
+
+  return true
+}
+
 prompt_minimal_setup "$@"
+
