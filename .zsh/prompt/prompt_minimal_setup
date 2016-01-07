@@ -43,6 +43,7 @@ function is_show_host_name() {
   no_name_hosts=(
     Jiulong-rMBP
     tw-mbp-jiulongw
+    arch-vm
   )
 
   for d in ${no_name_hosts}; do
