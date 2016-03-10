@@ -8,3 +8,5 @@ else
   alias ls='ls -FG'
 fi
 
+alias emacs='emacsclient --alternate-editor="" -c'
+
