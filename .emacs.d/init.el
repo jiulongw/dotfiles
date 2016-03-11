@@ -82,6 +82,12 @@
             (whitespace-mode -1)
             ))
 
+;; org-mode hooks
+(add-hook 'org-mode-hook
+          (lambda ()
+            (linum-relative-mode -1)
+            ))
+
 ;; show matching parens
 (setq show-paren-delay 0)
 (show-paren-mode 1)
