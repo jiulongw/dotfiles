@@ -1,4 +1,5 @@
 (setq inhibit-startup-message t)
+(setq-default indent-tabs-mode nil)
 
 (require 'cl)
 (require 'package)
@@ -44,6 +45,9 @@
 (projectile-global-mode)
 (load-theme 'monokai t)
 
+;; turn on whitespace mode, except in shell mode, which is handled by the hook
+(global-whitespace-mode)
+
 ;; evil leader key
 (evil-leader/set-leader ",")
 (evil-leader/set-key
@@ -56,7 +60,8 @@
   "b" 'switch-to-buffer
   "k" 'kill-buffer
   "ff" 'toggle-frame-fullscreen
-  "fm" 'toggle-frame-maximized)
+  "fm" 'toggle-frame-maximized
+  "w" 'whitespace-mode)
 
 ;; Ctrl+L = redraw and clear highlights
 (defun redraw-and-clear-highlight ()
@@ -71,7 +76,11 @@
 ;; multi-term shell
 (setq multi-term-dedicated-select-after-open-p t)
 (setq multi-term-program "/usr/local/bin/zsh")
-(add-hook 'term-mode-hook (lambda () (projectile-mode -1)))
+(add-hook 'term-mode-hook
+          (lambda ()
+            (projectile-mode -1)
+            (whitespace-mode -1)
+            ))
 
 ;; show matching parens
 (setq show-paren-delay 0)
