@@ -1,5 +1,7 @@
 (setq inhibit-startup-message t)
 (setq-default indent-tabs-mode nil)
+;;disable the version control
+(setq vc-handled-backends nil)
 
 (require 'cl)
 (require 'package)
@@ -46,6 +48,7 @@
 (load-theme 'monokai t)
 
 ;; turn on whitespace mode, except in shell mode, which is handled by the hook
+(setq whitespace-line-column 120)
 (global-whitespace-mode)
 
 ;; evil leader key
@@ -110,3 +113,17 @@
 ;; UI settings
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+
+;; Override projectile vcs function to return none-vcs for huge git repo
+(advice-add 'projectile-project-vcs :around
+            (lambda (orig &rest args)
+              (let ((project-root (car args)))
+                (or project-root (setq project-root (projectile-project-root)))
+                (cond
+                 ((file-in-directory-p project-root "~/workspace/source") 'none)
+                 (t (apply orig (cons project-root '())))
+                 )
+                )
+              )
+            )
+
