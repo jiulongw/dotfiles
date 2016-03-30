@@ -20,7 +20,9 @@
     linum-relative
     monokai-theme
     multi-term
-    projectile)
+    projectile
+    scala-mode2
+    )
   "A list of packages to ensure are installed at launch.")
 
 (defun my-packages-installed-p ()
@@ -49,6 +51,7 @@
 
 ;; turn on whitespace mode, except in shell mode, which is handled by the hook
 (setq whitespace-line-column 120)
+(setq whitespace-style '(face tabs spaces trailing lines-tail space-before-tab newline indentation empty space-after-tab space-mark tab-mark))
 (global-whitespace-mode)
 
 ;; evil leader key

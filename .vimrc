@@ -147,11 +147,6 @@ map <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Ctrl+S => save file
-map <C-s> :w<cr>
-imap <C-s> <C-o>:w<cr>
-vmap <C-s> :<C-w>:w<cr>
-
 " Disable arrow keys
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -166,7 +161,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 let g:markdown_fenced_languages = ['css', 'javascript', 'json=javascript', 'xml', 'html', 'python', 'java', 'c', 'cpp', 'cs']
 
-let g:ctrlp_root_markers=['TAGS', '.ctrlp-root']
+let g:ctrlp_root_markers=['TAGS', '.ctrlp-root', '.projectile']
 let g:ctrlp_map='c-0' "vim cannot map ctrl-0, just to turn off ctrl-p which is used to paste from clipboard.
 map <leader>p :CtrlP<cr>
 map <leader>bb :CtrlPBuffer<cr>
