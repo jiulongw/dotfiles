@@ -81,7 +81,13 @@
 
 ;; multi-term shell
 (setq multi-term-dedicated-select-after-open-p t)
-(setq multi-term-program "/usr/local/bin/zsh")
+(setq multi-term-program
+      (cond
+       ((file-exists-p "/usr/local/bin/zsh") "/usr/local/bin/zsh")
+       ((file-exists-p "/usr/bin/zsh") "/usr/bin/zsh")
+       (t "/bin/zsh")
+       )
+      )
 (add-hook 'term-mode-hook
           (lambda ()
             (projectile-mode -1)
@@ -130,3 +136,7 @@
               )
             )
 
+(if (eq system-type 'gnu/linux)
+  (setq default-frame-alist '((font . "Droid Sans Mono-10")))
+  (set-default-font "Droid Sans Mono-10")
+  )
