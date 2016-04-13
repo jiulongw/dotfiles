@@ -164,10 +164,12 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 let g:markdown_fenced_languages = ['css', 'javascript', 'json=javascript', 'xml', 'html', 'python', 'java', 'c', 'cpp', 'cs']
 
-let g:ctrlp_root_markers=['TAGS', '.ctrlp-root', '.projectile']
+let g:ctrlp_root_markers=['TAGS', '.ctrlp-root', '.git/']
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_map='c-0' "vim cannot map ctrl-0, just to turn off ctrl-p which is used to paste from clipboard.
 map <leader>p :CtrlP<cr>
 
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 
+let g:rooter_patterns = ['TAGS', '.ctrlp-root', '.git/']
+let g:rooter_manual_only = 1
