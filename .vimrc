@@ -153,6 +153,9 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
+" Switch to recent buffer
+noremap <leader>b :b#<cr>
+
 " No search highlight
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
@@ -162,10 +165,9 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['css', 'javascript', 'json=javascript', 'xml', 'html', 'python', 'java', 'c', 'cpp', 'cs']
 
 let g:ctrlp_root_markers=['TAGS', '.ctrlp-root', '.projectile']
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:ctrlp_map='c-0' "vim cannot map ctrl-0, just to turn off ctrl-p which is used to paste from clipboard.
 map <leader>p :CtrlP<cr>
-map <leader>bb :CtrlPBuffer<cr>
-map <leader>bs :CtrlPMRU<cr>
 
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 
