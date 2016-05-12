@@ -27,13 +27,14 @@ set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 " We are not accient
 set nocompatible
 
-" Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+" Show invisible characters
+set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:+
 set list
+
 " Speed up vim
-" set lazyredraw
 set synmaxcol=1024
 " Slash
+"
 set shellslash                    " Use / instead of \ in Windows
 
 if v:version > 703
@@ -42,23 +43,17 @@ endif
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.rar,*.tar.*
 set hidden                        " Change buffer - without saving
-" Set backspace config
-set backspace=eol,start,indent
+
 set whichwrap=b,s,<,>,[,],h,l
+
 " Mouse in all mode
 set mouse=a
 
 " magic for regex search
 set magic
 
-" indentation
-set autoindent
-set smartindent
-
 " keep your code clean and easy to read
 set linebreak
-" textwidth will force insert EOL. prefer to use a guide line instead (colorcolumn)
-" set textwidth=120
 set colorcolumn=120
 
 if has("gui_running")
@@ -81,7 +76,7 @@ if has("gui_running")
 endif
 
 set background=dark
-" colorscheme solarized
+
 colorscheme molokai
 
 set cursorline
@@ -110,8 +105,6 @@ set splitbelow
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" W to save as root
-" cnoremap W w !sudo tee % > /dev/null
 " Map copy and paste with system clipboard register
 map <C-y> "+y
 vmap <C-y> "+y
@@ -156,8 +149,13 @@ noremap <Right> <NOP>
 " Switch to recent buffer
 noremap <leader>b :b#<cr>
 
-" No search highlight
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+" NERDTree shortcuts
+map <leader>nn :NERDTreeToggle<CR>
+map <leader>nl :NERDTreeFind<CR>
+
+" grep
+map <leader>gw :execute "silent grep -iR . -e " . expand("<cword>")<CR>
+map <leader>gg :silent grep -iR . -e 
 
 " Treat *.md as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
@@ -172,4 +170,5 @@ map <leader>p :CtrlP<cr>
 nmap <silent> <C-n> :NERDTreeToggle<CR>
 
 let g:rooter_patterns = ['TAGS', '.ctrlp-root', '.git/']
+let g:rooter_use_lcd = 1
 let g:rooter_manual_only = 1
