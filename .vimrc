@@ -172,3 +172,6 @@ nmap <silent> <C-n> :NERDTreeToggle<CR>
 let g:rooter_patterns = ['TAGS', '.ctrlp-root', '.git/']
 let g:rooter_use_lcd = 1
 let g:rooter_manual_only = 1
+
+""" Full path to system clipboard
+nmap <silent> <leader>yp :let @+ = expand("%:p")<CR>
