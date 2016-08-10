@@ -9,7 +9,7 @@ setopt extendedglob
 
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
-export PATH=$PATH:~/.bin
+export PATH=~/bin:$PATH
 
 WORDCHARS='*?_-.[]~&;!#$%^(){}<>'
 
