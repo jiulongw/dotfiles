@@ -30,12 +30,11 @@ set ttimeoutlen=100
 set incsearch
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
-  nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
 set laststatus=2
 set ruler
-set showcmd
 set wildmenu
 
 if !&scrolloff
@@ -59,7 +58,7 @@ if v:version > 703 || v:version == 703 && has("patch541")
 endif
 
 if has('path_extra')
-  setglobal tags-=./tags tags^=./tags;
+  setglobal tags-=./tags tags-=./tags; tags^=./tags;
 endif
 
 if &shell =~# 'fish$'
@@ -67,7 +66,6 @@ if &shell =~# 'fish$'
 endif
 
 set autoread
-set fileformats+=mac
 
 if &history < 1000
   set history=1000
@@ -81,7 +79,7 @@ endif
 set sessionoptions-=options
 
 " Allow color schemes to do bright colors without forcing bold.
-if &t_Co == 8 && $TERM !~# '^linux'
+if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
   set t_Co=16
 endif
 
