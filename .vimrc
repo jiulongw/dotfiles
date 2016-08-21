@@ -70,8 +70,8 @@ if has("gui_running")
     set guifont=Monaco:h11
     set guifontwide=Songti\ SC:h12
   else
-    set guifont=Droid\ Sans\ Mono\ 10
-    set guifontwide=Droid\ Sans\ Mono\ 10
+    set guifont=DejaVu\ Sans\ Mono\ Book\ 10
+    set guifontwide=DejaVu\ Sans\ Mono\ Book\ 10
   endif
 endif
 
