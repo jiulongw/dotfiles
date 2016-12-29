@@ -1,0 +1,30 @@
+[submodule ".vim/bundle/ctrlp.vim"]
+	path = .vim/bundle/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim
+[submodule ".vim/bundle/molokai"]
+	path = .vim/bundle/molokai
+	url = https://github.com/tomasr/molokai
+[submodule ".vim/bundle/nerdtree"]
+	path = .vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule ".vim/bundle/vim-abolish"]
+	path = .vim/bundle/vim-abolish
+	url = https://github.com/tpope/vim-abolish
+[submodule ".vim/bundle/vim-commentary"]
+	path = .vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule ".vim/bundle/vim-repeat"]
+	path = .vim/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat
+[submodule ".vim/bundle/vim-sensible"]
+	path = .vim/bundle/vim-sensible
+	url = https://github.com/tpope/vim-sensible
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule ".vim/bundle/vim-unimpaired"]
+	path = .vim/bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired
+[submodule ".vim/bundle/vim-scala"]
+	path = .vim/bundle/vim-scala
+	url = https://github.com/derekwyatt/vim-scala
