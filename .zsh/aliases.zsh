@@ -8,5 +8,6 @@ else
   alias ls='ls -FG'
 fi
 
-alias emacs='emacsclient --alternate-editor="" -c'
-
+function title {
+  printf "\033]0;%s\007" "$1"
+}
