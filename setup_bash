@@ -5,3 +5,4 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ln -s $DIR/.bashrc ~/.bashrc
 ln -s $DIR/.inputrc ~/.inputrc
 ln -s $DIR/.git-completion.bash ~/.git-completion.bash
+ln -s $DIR/.git-prompt.sh ~/.git-prompt.sh
