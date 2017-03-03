@@ -3,8 +3,10 @@
 alias grep="grep --color=auto"
 alias ..="cd .."
 
-export CLICOLOR=1
-export LSCOLORS=GxFxCxDxBxegedabagaced
+CLICOLOR=1
+LSCOLORS=GxFxCxDxBxegedabagaced
+
+export HISTCONTROL=ignoreboth:erasedups
 [[ -d ~/bin ]] && export PATH=~/bin:$PATH
 
 [[ -a ~/.bashrc.local ]] && source ~/.bashrc.local
