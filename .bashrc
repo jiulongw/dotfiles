@@ -7,6 +7,9 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 export HISTCONTROL=ignoreboth:erasedups
+export HISTFILESIZE=
+export HISTSIZE=
+
 [[ -d ~/bin ]] && export PATH=~/bin:$PATH
 
 [[ -a ~/.bashrc.local ]] && source ~/.bashrc.local
