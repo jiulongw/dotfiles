@@ -5,16 +5,16 @@ execute pathogen#infect()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Get running OS
 function! GetRunningOS()
-    if has("win32")
-        return "win"
+  if has("win32")
+    return "win"
+  endif
+  if has("unix")
+    if system('uname')=~'Darwin'
+      return "mac"
+    else
+      return "unix"
     endif
-    if has("unix")
-        if system('uname')=~'Darwin'
-            return "mac"
-        else
-            return "unix"
-        endif
-    endif
+  endif
 endfunction
 
 let os=GetRunningOS()
@@ -85,9 +85,9 @@ set relativenumber
 set number
 
 " tab settings
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 set expandtab
 
 " Searching
@@ -112,9 +112,6 @@ map <C-p> "+p
 vmap <C-p> "+p
 nmap Y y$
 
-" Map to enter ; end of line
-inoremap <leader>; <esc>A;
-nnoremap <leader>; A;<esc>
 " open file in same directory
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 
@@ -153,18 +150,13 @@ noremap <leader>b :b#<cr>
 map <leader>nn :NERDTreeToggle<CR>
 map <leader>nl :NERDTreeFind<CR>
 
-" grep
-map <leader>gw :execute "silent grep -iR . -e " . expand("<cword>")<CR>
-map <leader>gg :silent grep -iR . -e 
-
-" Treat *.md as markdown
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-
 let g:markdown_fenced_languages = ['css', 'javascript', 'json=javascript', 'xml', 'html', 'python', 'java', 'c', 'cpp', 'cs']
 
-let g:ctrlp_root_markers=['TAGS', '.ctrlp-root', '.git/']
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-let g:ctrlp_map='c-0' "vim cannot map ctrl-0, just to turn off ctrl-p which is used to paste from clipboard.
+let g:ctrlp_map = 'c-0' "vim cannot map ctrl-0, just to turn off ctrl-p which is used to paste from clipboard.
+let g:ctrlp_root_markers = ['TAGS', '.ctrlp-root', '.git/']
+let g:ctrlp_use_caching = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
 map <leader>p :CtrlP<cr>
 
 nmap <silent> <C-n> :NERDTreeToggle<CR>
@@ -173,5 +165,15 @@ let g:rooter_patterns = ['TAGS', '.ctrlp-root', '.git/']
 let g:rooter_use_lcd = 1
 let g:rooter_manual_only = 1
 
-""" Full path to system clipboard
+let g:ackprg = 'ag --vimgrep'
+nnoremap <leader>a :Ack!<space>
+nnoremap <leader>; :Ack! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" Full path to system clipboard
 nmap <silent> <leader>yp :let @+ = expand("%:p")<CR>
+
+" Special tab settings
+autocmd Filetype go,scala,javascript,sh,proto,vim setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+" Treat *.md as markdown
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
