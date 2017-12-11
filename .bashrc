@@ -36,6 +36,4 @@ __conda_env() {
 }
 
 GIT_PS1_SHOWCOLORHINTS=1
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
 PROMPT_COMMAND='__git_ps1 "\$(__exit_status)\$(__conda_env)$HOST_NAME\W" " \\\$ "'
