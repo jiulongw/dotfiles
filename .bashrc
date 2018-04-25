@@ -6,11 +6,13 @@ alias ..="cd .."
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-export HISTCONTROL=ignoreboth:erasedups
-export HISTFILESIZE=
-export HISTSIZE=
+HISTCONTROL=ignoreboth:erasedups
+HISTFILESIZE=
+shopt -s histappend
+HISTSIZE=10000
 
 [[ -d ~/bin ]] && export PATH=~/bin:$PATH
+[[ -d ~/go/bin ]] && export PATH=~/go/bin:$PATH
 
 [[ -a ~/.bashrc.local ]] && source ~/.bashrc.local
 [[ -a ~/.git-prompt.sh ]] && source ~/.git-prompt.sh
@@ -35,5 +37,12 @@ __conda_env() {
   fi
 }
 
+__hist_util() {
+  history -n
+  history -w
+  history -c
+  history -r
+}
+
 GIT_PS1_SHOWCOLORHINTS=1
-PROMPT_COMMAND='__git_ps1 "\$(__exit_status)\$(__conda_env)$HOST_NAME\W" " \\\$ "'
+PROMPT_COMMAND='__hist_util; __git_ps1 "\$(__exit_status)\$(__conda_env)$HOST_NAME\W" " \\\$ "'
