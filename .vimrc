@@ -176,10 +176,15 @@ let g:javascript_plugin_flow = 1
 nmap <silent> <leader>yp :let @+ = expand("%:p")<CR>
 
 " Special tab settings
-autocmd Filetype go,scala,javascript,sh,proto,vim,yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd Filetype go,scala,javascript,sh,proto,vim,yaml,json,html,scss,sass,liquid setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 " Treat *.md as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Other file formats
 autocmd BufNewFile,BufReadPost *.eslintrc set filetype=json
+
+" Move backup, swap and undo files into centralized directory.
+set backupdir=/tmp/vim//
+set directory=/tmp/vim//
+set undodir=/tmp/vim//
