@@ -47,3 +47,5 @@ __hist_util() {
 
 GIT_PS1_SHOWCOLORHINTS=1
 PROMPT_COMMAND='__hist_util; __git_ps1 "\$(__exit_status)\$(__conda_env)$HOST_NAME\W" " \\\$ "'
+
+mkdir -p /tmp/vim
