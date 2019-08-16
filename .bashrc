@@ -3,6 +3,7 @@
 alias grep="grep --color=auto"
 alias ..="cd .."
 
+export EDITOR=vim
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
