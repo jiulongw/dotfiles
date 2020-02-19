@@ -46,3 +46,6 @@
 [submodule ".vim/pack/plugins/start/kotlin-vim"]
 	path = .vim/pack/plugins/start/kotlin-vim
 	url = https://github.com/udalov/kotlin-vim.git
+[submodule ".vim/pack/plugins/start/vim-terraform"]
+	path = .vim/pack/plugins/start/vim-terraform
+	url = https://github.com/hashivim/vim-terraform.git
