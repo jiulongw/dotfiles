@@ -2,6 +2,8 @@
 [[ `uname` == "Darwin" ]] && alias ls="ls -FG"
 alias grep="grep --color=auto"
 alias ..="cd .."
+alias python=python3
+alias pip=pip3
 
 export EDITOR=vim
 export CLICOLOR=1
@@ -32,12 +34,6 @@ __exit_status() {
   fi
 }
 
-__conda_env() {
-  if [ "$CONDA_DEFAULT_ENV" != "" ]; then
-    printf -- "($CONDA_DEFAULT_ENV) "
-  fi
-}
-
 __hist_util() {
   history -n
   history -w
@@ -46,6 +42,6 @@ __hist_util() {
 }
 
 GIT_PS1_SHOWCOLORHINTS=1
-PROMPT_COMMAND='__hist_util; __git_ps1 "\$(__exit_status)\$(__conda_env)$HOST_NAME\W" " \\\$ "'
+PROMPT_COMMAND='__hist_util; __git_ps1 "\$(__exit_status)$HOST_NAME\W" " \\\$ "'
 
 mkdir -p /tmp/vim
