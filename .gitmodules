@@ -49,3 +49,6 @@
 [submodule ".vim/pack/plugins/start/vim-terraform"]
 	path = .vim/pack/plugins/start/vim-terraform
 	url = https://github.com/hashivim/vim-terraform.git
+[submodule ".vim/pack/plugins/start/clang_complete"]
+	path = .vim/pack/plugins/start/clang_complete
+	url = https://github.com/xavierd/clang_complete

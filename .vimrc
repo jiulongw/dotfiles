@@ -164,6 +164,8 @@ nnoremap <leader>; :Ack! "\b<C-R><C-W>\b"<CR>:cw<CR>
 let g:jsx_ext_required = 0
 let g:javascript_plugin_flow = 1
 let g:terraform_fmt_on_save = 1
+let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
+let g:clang_debug=1
 
 " Full path to system clipboard
 nmap <silent> <leader>yp :let @+ = expand("%:p")<CR>
