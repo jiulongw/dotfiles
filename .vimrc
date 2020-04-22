@@ -168,6 +168,8 @@ let g:terraform_fmt_on_save = 1
 if os=="mac"
   let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
   let g:clang_user_options='-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -I/usr/local/include -stdlib=libc++'
+elseif os=="unix"
+  let g:clang_library_path='/usr/lib/llvm-6.0/lib'
 endif
 
 let g:clang_debug=0
