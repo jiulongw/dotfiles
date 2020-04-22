@@ -164,8 +164,13 @@ nnoremap <leader>; :Ack! "\b<C-R><C-W>\b"<CR>:cw<CR>
 let g:jsx_ext_required = 0
 let g:javascript_plugin_flow = 1
 let g:terraform_fmt_on_save = 1
-let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib'
-let g:clang_debug=1
+
+if os=="mac"
+  let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
+  let g:clang_user_options='-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -I/usr/local/include -stdlib=libc++'
+endif
+
+let g:clang_debug=0
 
 " Full path to system clipboard
 nmap <silent> <leader>yp :let @+ = expand("%:p")<CR>
