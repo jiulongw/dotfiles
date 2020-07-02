@@ -2,12 +2,10 @@
 [[ `uname` == "Darwin" ]] && alias ls="ls -FG"
 alias grep="grep --color=auto"
 alias ..="cd .."
-alias python=python3
-alias pip=pip3
 
 export EDITOR=vim
 export CLICOLOR=1
-export LSCOLORS=GxFxCxDxBxegedabagaced
+# export LSCOLORS=GxFxCxDxBxegedabagaced
 
 HISTCONTROL=ignoreboth:erasedups
 HISTFILESIZE=

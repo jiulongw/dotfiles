@@ -65,7 +65,7 @@ if has("gui_running")
     set guifontwide=NSimSun:h10:cDEFAULT
     au GUIEnter * simalt ~x
   elseif os=="mac"
-    set guifont=Monaco:h11
+    set guifont=Source\ Code\ Pro:h12
     set guifontwide=Songti\ SC:h12
   else
     set guifont=DejaVu\ Sans\ Mono\ Book\ 10
@@ -179,6 +179,8 @@ nmap <silent> <leader>yp :let @+ = expand("%:p")<CR>
 
 " Special tab settings
 autocmd Filetype go,scala,javascript,sh,proto,vim,yaml,json,html,scss,sass,liquid,cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+autocmd Filetype cpp setlocal cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
 
 " Treat *.md as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
