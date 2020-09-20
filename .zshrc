@@ -3,16 +3,22 @@
 [[ -d ~/go/bin ]] && export PATH=~/bin:$PATH
 [[ -a ~/.zshrc.local ]] && source ~/.zshrc.local
 
-ANDROID_STUDIO="/Applications/Android Studio.app/Contents/"
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export NDK_ROOT=$ANDROID_HOME/ndk/21.3.6528147
+# ANDROID_STUDIO="/Applications/Android Studio.app/Contents/"
+# export ANDROID_HOME=$HOME/Library/Android/sdk
+# export NDK_ROOT=$ANDROID_HOME/ndk/21.3.6528147
 export GOPATH=$HOME/go
 
-export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
-export PATH="$ANDROID_HOME/ndk-bundle:$PATH"
-export PATH="$ANDROID_STUDIO/jre/jdk/Contents/Home/bin:$PATH"
-export PATH="$PATH:$HOME/w/depot_tools:$HOME/go/bin"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+if [[ -d "$ANDROID_HOME" ]]; then
+    export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
+fi
+
+if [[ -d "$NDK_ROOT" ]]; then
+    export PATH="$NDK_ROOT:$PATH"
+fi
+
+# export PATH="$ANDROID_STUDIO/jre/jdk/Contents/Home/bin:$PATH"
+# export PATH="$PATH:$HOME/w/depot_tools:$HOME/go/bin"
+# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 alias yb="yarn build"
 alias yf="yarn format"
@@ -21,7 +27,7 @@ alias yt="yarn test"
 mkdir -p /tmp/vim
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/jiulongw/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -123,5 +129,3 @@ export EDITOR='vim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/etc/profile.d/z.sh
