@@ -3,10 +3,8 @@
 [[ -d ~/go/bin ]] && export PATH=~/bin:$PATH
 [[ -a ~/.zshrc.local ]] && source ~/.zshrc.local
 
-# ANDROID_STUDIO="/Applications/Android Studio.app/Contents/"
-# export ANDROID_HOME=$HOME/Library/Android/sdk
-# export NDK_ROOT=$ANDROID_HOME/ndk/21.3.6528147
 export GOPATH=$HOME/go
+export PATH="$PATH:$GOPATH/bin"
 
 if [[ -d "$ANDROID_HOME" ]]; then
     export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
@@ -15,10 +13,6 @@ fi
 if [[ -d "$NDK_ROOT" ]]; then
     export PATH="$NDK_ROOT:$PATH"
 fi
-
-# export PATH="$ANDROID_STUDIO/jre/jdk/Contents/Home/bin:$PATH"
-# export PATH="$PATH:$HOME/w/depot_tools:$HOME/go/bin"
-# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 alias yb="yarn build"
 alias yf="yarn format"
@@ -35,7 +29,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="mh"
+ZSH_THEME=""
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -117,6 +111,8 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='vim'
 
+PROMPT='[%{$fg[red]%}%24<...<%~%<<%{$reset_color%}]%(!.#.$) '
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -128,4 +124,3 @@ export EDITOR='vim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-

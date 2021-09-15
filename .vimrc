@@ -178,7 +178,7 @@ let g:clang_debug=0
 nmap <silent> <leader>yp :let @+ = expand("%:p")<CR>
 
 " Special tab settings
-autocmd Filetype go,scala,javascript,sh,proto,vim,yaml,json,html,scss,sass,liquid,cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd Filetype go,scala,javascript,typescript,sh,proto,vim,yaml,json,html,scss,sass,liquid,cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 autocmd Filetype cpp setlocal cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
 
@@ -187,6 +187,9 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " Other file formats
 autocmd BufNewFile,BufReadPost *.eslintrc set filetype=json
+
+" CDC = Change to Directory of Current file
+command CDC cd %:p:h
 
 " Move backup, swap and undo files into centralized directory.
 set backupdir=/tmp/vim//
