@@ -3,4 +3,3 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 ln -fs $DIR/.tmux/.tmux.conf ~/.tmux.conf
-ln -fs $DIR/.tmux.conf.local ~/.tmux.conf.local
