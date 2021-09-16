@@ -120,6 +120,7 @@ cnoremap %% <C-R>=expand('%:h').'/'<cr>
 map <leader>co :botright cope<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
+map <leader>cc :cclose<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -153,10 +154,6 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
 map <leader>p :CtrlP<cr>
 
-let g:rooter_patterns = ['TAGS', '.ctrlp-root', '.git/']
-let g:rooter_use_lcd = 1
-let g:rooter_manual_only = 1
-
 let g:ackprg = 'ag --vimgrep'
 nnoremap <leader>a :Ack!<space>
 nnoremap <leader>; :Ack! "\b<C-R><C-W>\b"<CR>:cw<CR>
@@ -164,15 +161,6 @@ nnoremap <leader>; :Ack! "\b<C-R><C-W>\b"<CR>:cw<CR>
 let g:jsx_ext_required = 0
 let g:javascript_plugin_flow = 1
 let g:terraform_fmt_on_save = 1
-
-if os=="mac"
-  let g:clang_library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib'
-  let g:clang_user_options='-isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -I/usr/local/include -stdlib=libc++'
-elseif os=="unix"
-  let g:clang_library_path='/usr/lib/llvm-6.0/lib'
-endif
-
-let g:clang_debug=0
 
 " Full path to system clipboard
 nmap <silent> <leader>yp :let @+ = expand("%:p")<CR>
