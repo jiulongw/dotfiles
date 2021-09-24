@@ -58,3 +58,6 @@
 [submodule ".vim/pack/plugins/start/fluent.vim"]
 	path = .vim/pack/plugins/start/fluent.vim
 	url = https://github.com/projectfluent/fluent.vim.git
+[submodule ".vim/pack/plugins/start/rust.vim"]
+	path = .vim/pack/plugins/start/rust.vim
+	url = https://github.com/rust-lang/rust.vim
