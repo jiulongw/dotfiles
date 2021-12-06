@@ -183,3 +183,6 @@ command CDC cd %:p:h
 set backupdir=/tmp/vim//
 set directory=/tmp/vim//
 set undodir=/tmp/vim//
+
+" Use # to comment protobuf files
+autocmd FileType proto setlocal commentstring=//\ %s
