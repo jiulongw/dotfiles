@@ -1,17 +1,17 @@
 # If you come from bash you might have to change your $PATH.
-[[ -d ~/bin ]] && export PATH=~/bin:$PATH
-[[ -d ~/go/bin ]] && export PATH=~/bin:$PATH
-[[ -a ~/.zshrc.local ]] && source ~/.zshrc.local
+[[ -d $HOME/bin ]] && export PATH=$HOME/bin:$PATH
+[[ -a $HOME/.zshrc.local ]] && source ~/.zshrc.local
 
-export GOPATH=$HOME/go
-export PATH="$PATH:$GOPATH/bin"
+if [[ -d "$GOPATH" ]]; then
+    export PATH="$PATH:$GOPATH/bin"
+fi
 
 if [[ -d "$ANDROID_HOME" ]]; then
-    export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH"
+    export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools"
 fi
 
 if [[ -d "$NDK_ROOT" ]]; then
-    export PATH="$NDK_ROOT:$PATH"
+    export PATH="$PATH:$NDK_ROOT"
 fi
 
 alias yb="yarn build"
