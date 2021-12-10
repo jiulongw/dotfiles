@@ -61,3 +61,6 @@
 [submodule ".vim/pack/plugins/start/rust.vim"]
 	path = .vim/pack/plugins/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim
+[submodule ".vim/pack/plugins/start/vim-solidity"]
+	path = .vim/pack/plugins/start/vim-solidity
+	url = https://github.com/TovarishFin/vim-solidity
