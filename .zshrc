@@ -14,6 +14,9 @@ if [[ -d "$NDK_ROOT" ]]; then
     export PATH="$PATH:$NDK_ROOT"
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+
 alias yb="yarn build"
 alias yf="yarn format"
 alias yt="yarn test"
