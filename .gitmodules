@@ -64,3 +64,12 @@
 [submodule ".vim/pack/plugins/start/vim-solidity"]
 	path = .vim/pack/plugins/start/vim-solidity
 	url = https://github.com/TovarishFin/vim-solidity
+[submodule ".vim/pack/plugins/start/typescript-vim"]
+	path = .vim/pack/plugins/start/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule ".vim/pack/plugins/start/vim-tsx"]
+	path = .vim/pack/plugins/start/vim-tsx
+	url = https://github.com/ianks/vim-tsx.git
+[submodule ".vim/pack/plugins/start/gruvbox"]
+	path = .vim/pack/plugins/start/gruvbox
+	url = https://github.com/morhetz/gruvbox
