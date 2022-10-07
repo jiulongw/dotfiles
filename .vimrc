@@ -23,9 +23,18 @@ let g:mapleader = ","
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
-" Italic support in terminal
-set t_ZH=[3m
-set t_ZR=[23m
+" Some extra terminal feature support
+if &term =~ '^\%(screen\|tmux\)'
+  " Italic support
+  let &t_ZH= "\<Esc>[3m"
+  let &t_ZR= "\<Esc>[23m"
+
+  " Focus events
+  let &t_fe = "\<Esc>[?1004h"
+  let &t_fd = "\<Esc>[?1004l"
+  execute "set <FocusGained>=\<Esc>[I"
+  execute "set <FocusLost>=\<Esc>[O"
+endif
 
 " We are not accient
 set nocompatible
@@ -106,6 +115,8 @@ set stal=1
 
 set splitright
 set splitbelow
+
+set autoread
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Shortcuts
@@ -194,3 +205,12 @@ set undodir=/tmp/vim//
 
 " Use # to comment protobuf files
 autocmd FileType proto setlocal commentstring=//\ %s
+
+" Triger `autoread` when files changes on disk
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+
+" Notification after file change
+" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
