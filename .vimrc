@@ -18,9 +18,14 @@ endfunction
 let os=GetRunningOS()
 " Remap leader
 let g:mapleader = ","
+
 " work with unicode by default
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+
+" Italic support in terminal
+set t_ZH=[3m
+set t_ZR=[23m
 
 " We are not accient
 set nocompatible
@@ -75,7 +80,9 @@ endif
 
 set background=dark
 
-colorscheme molokai
+" colorscheme molokai
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 set cursorline
 set showmode
@@ -161,12 +168,13 @@ nnoremap <leader>; :Ack! "\b<C-R><C-W>\b"<CR>:cw<CR>
 let g:jsx_ext_required = 0
 let g:javascript_plugin_flow = 1
 let g:terraform_fmt_on_save = 1
+let g:typescript_indent_disable = 1
 
 " Full path to system clipboard
 nmap <silent> <leader>yp :let @+ = expand("%:p")<CR>
 
 " Special tab settings
-autocmd Filetype go,scala,javascript,typescript,sh,proto,vim,yaml,json,html,scss,sass,liquid,cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd Filetype go,scala,javascript,typescript,typescript.tsx,sh,proto,vim,yaml,json,html,scss,sass,liquid,cpp setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 autocmd Filetype cpp setlocal cinoptions=h1,l1,g1,t0,i4,+4,(0,w1,W4
 
