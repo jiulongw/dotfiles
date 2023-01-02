@@ -24,7 +24,7 @@ set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 " Some extra terminal feature support
-if &term =~ '^\%(screen\|tmux\)'
+if &term =~ '^\%(screen\|tmux\|xterm\)'
   " Italic support
   let &t_ZH= "\<Esc>[3m"
   let &t_ZR= "\<Esc>[23m"
