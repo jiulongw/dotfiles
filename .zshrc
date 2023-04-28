@@ -27,7 +27,12 @@ alias yt="yarn test"
 mkdir -p /tmp/vim
 
 # >>> conda initialize >>>
-CONDA_HOME=$HOME/miniconda3
+if [[ -d "/opt/homebrew/Caskroom/miniconda/base" ]]; then
+    CONDA_HOME=/opt/homebrew/Caskroom/miniconda/base
+else
+    CONDA_HOME=$HOME/miniconda3
+fi
+
 if [[ -d "$CONDA_HOME" ]]; then
     __conda_setup=`"${CONDA_HOME}/bin/conda" 'shell.zsh' 'hook' 2> /dev/null`
     if [ $? -eq 0 ]; then
