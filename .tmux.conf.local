@@ -336,6 +336,9 @@ tmux_conf_copy_to_os_clipboard=true
 # -- user customizations -------------------------------------------------------
 # this is the place to override or undo settings
 
+# avoid $PATH in tmux being different from normal $PATH.
+set -g default-command "$SHELL"
+
 # increase history size
 set -g history-limit 10000
 

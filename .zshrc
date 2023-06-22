@@ -1,17 +1,21 @@
-# If you come from bash you might have to change your $PATH.
-[[ -d $HOME/bin ]] && export PATH=$HOME/bin:$PATH
+typeset -aU path
+
 [[ -a $HOME/.zshrc.local ]] && source ~/.zshrc.local
 
+if [[ -d $HOME/bin ]]; then
+    path=("$HOME/bin" $path)
+fi
+
 if [[ -d "$GOPATH" ]]; then
-    export PATH="$PATH:$GOPATH/bin"
+    path+=("$GOPATH/bin")
 fi
 
 if [[ -d "$ANDROID_HOME" ]]; then
-    export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools"
+    path+=("$ANDROID_HOME/platform-tools" "$ANDROID_HOME/tools")
 fi
 
 if [[ -d "$NDK_ROOT" ]]; then
-    export PATH="$PATH:$NDK_ROOT"
+    path+=("$NDK_ROOT")
 fi
 
 export NVM_DIR="$HOME/.nvm"
@@ -41,12 +45,14 @@ if [[ -d "$CONDA_HOME" ]]; then
         if [ -f "${CONDA_HOME}/etc/profile.d/conda.sh" ]; then
             . "${CONDA_HOME}/etc/profile.d/conda.sh"
         else
-            export PATH="$PATH:${CONDA_HOME}/bin"
+            path+=("${CONDA_HOME}/bin")
         fi
     fi
     unset __conda_setup
 fi
 # <<< conda initialize <<<
+
+export PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
