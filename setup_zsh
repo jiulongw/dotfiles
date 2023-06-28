@@ -5,4 +5,6 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ln -fs "$DIR/.zshrc" "$HOME/.zshrc"
 if [[ `uname` == 'Linux' ]]; then
   ln -fs "$DIR/.zshrc.local.linux" "$HOME/.zshrc.local"
+elif [[ `uname` == 'Darwin' ]]; then
+  ln -fs "$DIR/.zshrc.local.macos" "$HOME/.zshrc.local"
 fi
