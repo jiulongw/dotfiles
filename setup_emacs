@@ -1,0 +1,23 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+ln -fhs $DIR/.emacs.d ~/.emacs.d
+
+if [[ `uname` == 'Darwin' ]]; then
+  EMACS_APP=/Applications/Emacs.app/Contents/MacOS/
+
+  if EMACS_BIN=`which emacs` ; then
+    echo "emacs binary found: $EMACS_BIN"
+  else
+    echo "Enter password to link emacs binary."
+    sudo ln -fs "$EMACS_APP/Emacs" "/usr/local/bin/emacs"
+  fi
+
+  if EMACSCLIENT_BIN=`which emacsclient` ; then
+    echo "emacsclient binary found: $EMACSCLIENT_BIN"
+  else
+    echo "Enter password to link emacsclient binary."
+    sudo ln -fs "$EMACS_APP/bin/emacsclient" "/usr/local/bin/emacsclient"
+  fi
+fi

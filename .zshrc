@@ -27,6 +27,8 @@ export NVM_DIR="$HOME/.nvm"
 alias yb="yarn build"
 alias yf="yarn format"
 alias yt="yarn test"
+alias em="emacsclient -a '' -nc"
+alias emk="emacsclient -e '(kill-emacs)'"
 
 mkdir -p /tmp/vim
 
@@ -53,6 +55,7 @@ fi
 # <<< conda initialize <<<
 
 export PATH
+export CONDA_HOME
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
