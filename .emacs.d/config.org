@@ -24,6 +24,7 @@
   - [[#org-mode-enhancements][Org-mode enhancements]]
   - [[#lsp---language-server][Lsp - language server]]
   - [[#magit---git-client][Magit - git client]]
+  - [[#ag---the-silver-searcher][Ag - the silver searcher]]
 - [[#development][Development]]
   - [[#go][GO]]
   - [[#python][Python]]
@@ -74,7 +75,6 @@
 #+begin_src emacs-lisp
   (add-to-list 'image-types 'svg)
 #+end_src
-
 
 * UI Customization
 
@@ -165,6 +165,9 @@ Make sure "Source Code Pro" is installed in the system: https://github.com/adobe
     (setq evil-want-keybinding nil)
     (setq evil-vsplit-window-right t)
     (setq evil-split-window-below t)
+    :config
+    (defalias #'forward-evil-word #'forward-evil-symbol) ;; make w jump underscore
+    (setq-default evil-symbol-word-search t)
     (evil-mode))
 
   (use-package evil-collection
@@ -274,6 +277,12 @@ Make sure "Source Code Pro" is installed in the system: https://github.com/adobe
 
 #+begin_src emacs-lisp
 (use-package magit)
+#+end_src
+
+** Ag - the silver searcher
+
+#+begin_src emacs-lisp
+(use-package ag)
 #+end_src
 
 * Development
