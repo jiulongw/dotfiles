@@ -29,6 +29,8 @@
   - [[#go][GO]]
   - [[#python][Python]]
   - [[#cmake][CMake]]
+  - [[#yaml][Yaml]]
+  - [[#terraform][Terraform]]
 
 * Bedrock
 
@@ -43,8 +45,10 @@
 #+begin_src emacs-lisp
   (require 'package)
 
-  (add-to-list 'package-archives
-               '("melpa" . "https://melpa.org/packages/") t)
+  (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                           ("melpa-stable" . "https://stable.melpa.org/packages/")
+                           ("elpa" . "https://elpa.gnu.org/packages/")))
+
   (package-initialize)
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
@@ -106,32 +110,34 @@
 Make sure "Source Code Pro" is installed in the system: https://github.com/adobe-fonts/source-code-pro
 
 #+begin_src emacs-lisp
-  (set-face-attribute 'default nil
-                      :font "Source Code Pro"
-                      :height 120
-                      :weight 'normal)
-  (set-face-attribute 'variable-pitch nil
-                      :font (if (eq system-type 'darwin)
-                                "Helvetica"
-                              "Arial"
-                              ) 
-                      :height 120
-                      :weight 'normal)
-  (set-face-attribute 'fixed-pitch nil
-                      :font "Source Code Pro"
-                      :height 120
-                      :weight 'normal)
+  (defun jw/set-font-faces ()
+    (set-face-attribute 'default nil
+                        :family "Source Code Pro"
+                        :height 120
+                        :weight 'normal)
+    (set-face-attribute 'variable-pitch nil
+                        :family (if (eq system-type 'darwin)
+                                    "Helvetica Neue"
+                                  "Arial"
+                                  ) 
+                        :height 120
+                        :weight 'normal)
+    (set-face-attribute 'fixed-pitch nil
+                        :family "Source Code Pro"
+                        :height 120
+                        :weight 'normal)
 
-  ;; Makes commented text and keywords italics.
-  (set-face-attribute 'font-lock-comment-face nil
-                      :slant 'italic)
-  (set-face-attribute 'font-lock-keyword-face nil
-                      :slant 'italic)
+    ;; Makes commented text and keywords italics.
+    (set-face-attribute 'font-lock-comment-face nil
+                        :slant 'italic)
+    (set-face-attribute 'font-lock-keyword-face nil
+                        :slant 'italic)
+    )
 
-  ;; This sets the default font on all graphical frames created after restarting Emacs.
-  ;; Does the same thing as 'set-face-attribute default' above, but emacsclient fonts
-  ;; are not right unless I also add this method of setting the default font.
-  (add-to-list 'default-frame-alist '(font . "Source Code Pro-12"))
+  ;; For daemon mode, defer font setting after frame is created, otherwise it won't take effect.
+  (if (daemonp)
+      (add-hook 'server-after-make-frame-hook 'jw/set-font-faces)
+    (jw/set-font-faces))
 #+end_src
 
 * Essential packages
@@ -166,14 +172,12 @@ Make sure "Source Code Pro" is installed in the system: https://github.com/adobe
     (setq evil-vsplit-window-right t)
     (setq evil-split-window-below t)
     :config
-    (defalias #'forward-evil-word #'forward-evil-symbol) ;; make w jump underscore
     (setq-default evil-symbol-word-search t)
     (evil-mode))
 
   (use-package evil-collection
     :after evil
     :config
-    (setq evil-collection-mode-list '(dashboard dired ibuffer xref magit))
     (evil-collection-init))
 #+end_src
 
@@ -221,6 +225,10 @@ Make sure "Source Code Pro" is installed in the system: https://github.com/adobe
      :states 'normal
      "-" #'dired-jump)
 
+    (general-define-key :states '(insert motion)
+                        :keymaps 'org-mode-map
+                        "C-c l" 'org-roam-node-insert)
+
     ;; set up ',' as the global leader key
     (general-create-definer jw/leader-keys
       :states '(normal insert visual emacs motion)
@@ -234,26 +242,59 @@ Make sure "Source Code Pro" is installed in the system: https://github.com/adobe
       "bk" '(kill-this-buffer :wk "Kill this buffer")
       "bn" '(next-buffer :wk "Next buffer")
       "bp" '(previous-buffer :wk "Previous buffer")
-      "br" '(revert-buffer :wk "Reload buffer")
-    )
+      "br" '(revert-buffer :wk "Reload buffer"))
+
+    (jw/leader-keys
+      "o" '(:ignore t :wk "Org Mode")
+      "oc" '(org-roam-capture :wk "Capture a note")
+      "od" '(org-roam-dailies-capture-date :wk "Capture a daily note")
+      "of" '(org-roam-node-find :wk "Find and open a note"))
 
     (jw/leader-keys
       "p" '(projectile-command-map :wk "Projectile command map")
+      "x" '(org-toggle-checkbox :wk "Toggle checkbox"))
     )
-  )
 #+end_src
 
 ** Org-mode enhancements
 
 #+begin_src emacs-lisp
+  (defconst jw/org-roam-home "~/brain2")
+  (setq org-agenda-files (list
+                          jw/org-roam-home 
+                          (mapconcat 'identity (list jw/org-roam-home "daily") "/")))
+  (setq org-startup-indented t)
+  (setq org-hide-emphasis-markers t)
+  (setq org-todo-keywords
+        '(
+          (sequence "TODO(t)" "|" "DONE(d)")
+          (sequence "IDEA(i)" "PROG(p)" "HOLD(h)" "|" "COMP(c)" "CANC(a)")
+          ))
+
+  (add-hook 'org-mode-hook (lambda () (setq fill-column 100)))
+
   (use-package toc-org
     :commands toc-org-enable
     :init (add-hook 'org-mode-hook 'toc-org-enable))
-  (add-hook 'org-mode-hook 'org-indent-mode)
-  (use-package org-bullets)
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
-  (require 'org-tempo)
+  (use-package org-bullets
+    :hook (org-mode . (lambda () (org-bullets-mode 1))))
+
+  (use-package org-download)
+
+  (use-package org-roam
+    :init
+    (unless (file-directory-p jw/org-roam-home) (make-directory jw/org-roam-home))
+    (setq org-roam-directory (file-truename jw/org-roam-home))
+    :config
+    (org-roam-db-autosync-mode))
+
+  (use-package evil-org
+    :after org
+    :hook (org-mode . (lambda () evil-org-mode))
+    :config
+    (require 'evil-org-agenda)
+    (evil-org-agenda-set-keys))
 #+end_src
 
 ** Lsp - language server
@@ -264,6 +305,7 @@ Make sure "Source Code Pro" is installed in the system: https://github.com/adobe
     (setq lsp-keymap-prefix "C-c l")
     (setq lsp-clients-flow-server "yarn")
     (setq lsp-clients-flow-server-args '("flow" "lsp"))
+    (setq lsp-enable-snippet nil)
     :hook (
            (c-mode . lsp)
            (c++-mode . lsp)
@@ -307,4 +349,24 @@ Make sure "Source Code Pro" is installed in the system: https://github.com/adobe
 
 #+begin_src emacs-lisp
   (use-package cmake-mode)
+#+end_src
+
+** Yaml
+
+#+begin_src emacs-lisp
+  (use-package yaml-mode)
+#+end_src
+
+** Terraform
+
+#+begin_src emacs-lisp
+  (use-package terraform-mode
+    :custom (terraform-indent-level 2)
+    :config
+    (defun jw/terraform-mode-init ()
+      (outline-minor-mode 1)
+      (terraform-format-on-save-mode 1)
+      )
+
+    (add-hook 'terraform-mode-hook #'jw/terraform-mode-init))
 #+end_src
