@@ -166,7 +166,7 @@ noremap <leader>b :b#<cr>
 let g:markdown_fenced_languages = ['css', 'javascript', 'json=javascript', 'xml', 'html', 'python', 'java', 'c', 'cpp', 'cs']
 
 let g:ctrlp_map = 'c-0' "vim cannot map ctrl-0, just to turn off ctrl-p which is used to paste from clipboard.
-let g:ctrlp_root_markers = ['TAGS', '.ctrlp-root', '.git/', 'requirements.txt', 'package.json']
+let g:ctrlp_root_markers = ['TAGS', '.ctrlp', '.git', 'requirements.txt', 'package.json']
 let g:ctrlp_use_caching = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
@@ -199,11 +199,12 @@ autocmd BufNewFile,BufReadPost *.eslintrc set filetype=json
 command CDC cd %:p:h
 
 " Move backup, swap and undo files into centralized directory.
+call mkdir("/tmp/vim", "p")
 set backupdir=/tmp/vim//
 set directory=/tmp/vim//
 set undodir=/tmp/vim//
 
-" Use # to comment protobuf files
+" Use // to comment protobuf files
 autocmd FileType proto setlocal commentstring=//\ %s
 
 " Triger `autoread` when files changes on disk

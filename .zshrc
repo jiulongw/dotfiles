@@ -30,8 +30,6 @@ alias yt="yarn test"
 alias em="emacsclient -a '' -nc"
 alias emk="emacsclient -e '(kill-emacs)'"
 
-mkdir -p /tmp/vim
-
 # >>> conda initialize >>>
 if [[ -d "/opt/homebrew/Caskroom/miniconda/base" ]]; then
     CONDA_HOME=/opt/homebrew/Caskroom/miniconda/base
