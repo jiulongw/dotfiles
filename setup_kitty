@@ -2,5 +2,4 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-ln -fhs $DIR/.vimrc ~/.vimrc
-ln -fhs $DIR/.vim ~/.vim
+ln -fhs $DIR/kitty ~/.config/kitty
