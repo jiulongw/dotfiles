@@ -73,6 +73,3 @@
 [submodule ".vim/pack/plugins/start/gruvbox"]
 	path = .vim/pack/plugins/start/gruvbox
 	url = https://github.com/morhetz/gruvbox
-[submodule ".vim/pack/plugins/start/copilot.vim"]
-	path = .vim/pack/plugins/start/copilot.vim
-	url = https://github.com/github/copilot.vim.git
