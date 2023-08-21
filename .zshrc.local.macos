@@ -1,3 +1,4 @@
+# homebrew bin goes to the end otherwise it breaks conda pip
 path+=("/opt/homebrew/bin")
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
