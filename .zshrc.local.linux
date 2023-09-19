@@ -2,7 +2,7 @@ source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 source "$HOME/github/z/z.sh"
 
 export ANDROID_HOME=$HOME/android/sdk
-export NDK_ROOT=$ANDROID_HOME/ndk/23.1.7779620
+export NDK_ROOT=$ANDROID_HOME/ndk/25.2.9519653
 
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
