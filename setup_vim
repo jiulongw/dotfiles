@@ -4,3 +4,4 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 ln -fhs $DIR/.vimrc ~/.vimrc
 ln -fhs $DIR/.vim ~/.vim
+vim +PlugInstall +qall

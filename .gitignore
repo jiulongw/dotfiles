@@ -6,6 +6,8 @@
 .emacs.d/projectile-bookmarks.eld
 .emacs.d/projectile.cache
 
+/.vim/plugged
+/.vim/spell
 /.vim/backup
 /.vim/swap
 /.vim/undo
