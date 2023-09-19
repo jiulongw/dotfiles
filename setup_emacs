@@ -2,7 +2,7 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-ln -fhs $DIR/.emacs.d ~/.emacs.d
+ln -fns $DIR/.emacs.d ~/.emacs.d
 
 if [[ `uname` == 'Darwin' ]]; then
   EMACS_APP=/Applications/Emacs.app/Contents/MacOS/
