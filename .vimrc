@@ -148,6 +148,7 @@ let g:ctrlp_map = 'c-0' "vim cannot map ctrl-0, just to turn off ctrl-p which is
 let g:ctrlp_root_markers = ['TAGS', '.ctrlp', '.git', 'requirements.txt', 'package.json']
 let g:ctrlp_use_caching = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+nnoremap <leader>p :CtrlP<cr>
 
 let g:ackprg = 'ag --vimgrep'
 nnoremap <leader>a :Ack!<space>
