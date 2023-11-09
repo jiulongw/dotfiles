@@ -77,10 +77,12 @@ Plug 'fatih/vim-go'
 Plug 'hashivim/vim-terraform'
 Plug 'ianks/vim-tsx'
 Plug 'leafgarland/typescript-vim'
+Plug 'mattn/vim-lsp-settings'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
+Plug 'prabirshrestha/vim-lsp'
 Plug 'projectfluent/fluent.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'tpope/vim-abolish'
@@ -158,6 +160,35 @@ let g:jsx_ext_required = 0
 let g:javascript_plugin_flow = 1
 let g:terraform_fmt_on_save = 1
 let g:typescript_indent_disable = 1
+
+let g:lsp_settings = {
+\  'gopls': {'disabled': v:true},
+\  'golangci-lint-langserver': {'disabled': v:true}
+\}
+
+" disable diagnostics support
+let g:lsp_diagnostics_enabled = 0
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gD <plug>(lsp-diagnostic)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
 " ============================================================
 
