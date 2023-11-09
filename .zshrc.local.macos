@@ -14,3 +14,5 @@ ANDROID_STUDIO="/Applications/Android Studio.app/Contents"
 export JAVA_HOME="$ANDROID_STUDIO/jre/Contents/Home"
 
 path+=("$HOME/w/depot_tools" "$HOME/.cargo/bin" "/opt/homebrew/opt/libpq/bin")
+
+export PICO_SDK_PATH=$HOME/github/pico-sdk
