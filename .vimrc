@@ -46,7 +46,7 @@ if has("gui_running")
   set guioptions-=r
   set guioptions-=l
   set guioptions-=m
-  set guifont=Source\ Code\ Pro:h12
+  set guifont=Monaspace\ Argon:h12
 endif
 
 " Some extra terminal feature support

@@ -107,12 +107,12 @@
 
 ** Fonts
 
-Make sure "Source Code Pro" is installed in the system: https://github.com/adobe-fonts/source-code-pro
+Make sure "Monaspace Argon" is installed in the system: https://github.com/githubnext/monaspace
 
 #+begin_src emacs-lisp
   (defun jw/set-font-faces ()
     (set-face-attribute 'default nil
-                        :family "Source Code Pro"
+                        :family "Monaspace Argon"
                         :height 120
                         :weight 'normal)
     (set-face-attribute 'variable-pitch nil
@@ -123,7 +123,7 @@ Make sure "Source Code Pro" is installed in the system: https://github.com/adobe
                         :height 120
                         :weight 'normal)
     (set-face-attribute 'fixed-pitch nil
-                        :family "Source Code Pro"
+                        :family "Monaspace Argon"
                         :height 120
                         :weight 'normal)
 
