@@ -11,7 +11,7 @@ if [[ -d "$GOPATH" ]]; then
 fi
 
 if [[ -d "$ANDROID_HOME" ]]; then
-    path+=("$ANDROID_HOME/platform-tools" "$ANDROID_HOME/tools")
+    path+=("$ANDROID_HOME/platform-tools" "$ANDROID_HOME/tools" "$ANDROID_HOME/cmdline-tools/latest/bin")
 fi
 
 if [[ -d "$NDK_ROOT" ]]; then
