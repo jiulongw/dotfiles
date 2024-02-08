@@ -42,11 +42,14 @@ set listchars=tab:▸\ ,trail:·,eol:¬,nbsp:+
 set list
 
 if has("gui_running")
+  if has("mac")
+    set macligatures
+  endif
   set guioptions-=T
   set guioptions-=r
   set guioptions-=l
   set guioptions-=m
-  set guifont=Monaspace\ Argon:h12
+  set guifont=Monaspace\ Argon:h13
 endif
 
 " Some extra terminal feature support

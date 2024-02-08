@@ -1,5 +1,6 @@
-# homebrew bin goes to the end otherwise it breaks conda pip
-path+=("/opt/homebrew/bin")
+# Homebrew bin needs to be at the end of list if tmux is used.
+# Since I'm not using tmux in macOS anymore, move it to front for `vim -g` to work.
+path=("/opt/homebrew/bin" $path)
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source "$HOME/github/z/z.sh"
