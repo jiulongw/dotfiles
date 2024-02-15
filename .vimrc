@@ -73,7 +73,7 @@ let g:mapleader = ","
 " Plugins managed by https://github.com/junegunn/vim-plug
 call plug#begin()
 
-Plug 'TovarishFin/vim-solidity'
+Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 Plug 'cespare/vim-toml'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'derekwyatt/vim-scala'
