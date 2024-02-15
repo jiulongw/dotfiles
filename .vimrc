@@ -49,6 +49,7 @@ if has("gui_running")
   set guioptions-=r
   set guioptions-=l
   set guioptions-=m
+  set guioptions+=k
   set guifont=Monaspace\ Argon:h13
 endif
 
