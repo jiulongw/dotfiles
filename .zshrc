@@ -34,10 +34,6 @@ alias yf="yarn format"
 alias yt="yarn test"
 alias em="emacsclient -a '' -nc"
 alias emk="emacsclient -e '(kill-emacs)'"
-alias gv="gvim --remote-silent"
-alias vi="vim --remote-silent"
-alias icat="kitty +kitten icat"
-alias kssh="kitty +kitten ssh"
 
 # >>> conda initialize >>>
 if [[ -d "/opt/homebrew/Caskroom/miniconda/base" ]]; then
