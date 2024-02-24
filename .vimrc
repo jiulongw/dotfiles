@@ -66,6 +66,10 @@ if &term =~ '^\%(screen\|tmux\|xterm\)'
   execute "set <FocusLost>=\<Esc>[O"
 endif
 
+if &term =~ '^\%(alacritty\|tmux\)'
+  set ttymouse=sgr
+endif
+
 let g:mapleader = ","
 
 " ============================================================
