@@ -1,14 +1,16 @@
 typeset -aU path
 
 function prepend_path() {
-    # avoid prepending path in tmux, because it would mess up with the expected order.
-    if [[ -d $1 && -z $TMUX ]]; then
+    # prepend path if directory exists, and the path is not in the $path array.
+    # this is to prevent unexpectedly change the order of $path when zsh is nested (such as in tmux).
+    if [[ -d $1 && -z $path[(r)$1] ]]; then
         path=($1 $path)
     fi
 }
 
 function append_path() {
-    # append path if directory exists
+    # append path if directory exists, we don't need to worry adding path twice,
+    # because `typeset -aU path` in the very beginning will do that for us.
     if [[ -d $1 ]]; then
         path+=($1)
     fi
