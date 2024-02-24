@@ -1,22 +1,27 @@
 typeset -aU path
 
+function prepend_path() {
+    # avoid prepending path in tmux, because it would mess up with the expected order.
+    if [[ -d $1 && -z $TMUX ]]; then
+        path=($1 $path)
+    fi
+}
+
+function append_path() {
+    # append path if directory exists
+    if [[ -d $1 ]]; then
+        path+=($1)
+    fi
+}
+
 [[ -a $HOME/.zshrc.local ]] && source ~/.zshrc.local
 
-if [[ -d $HOME/bin ]]; then
-    path=("$HOME/bin" $path)
-fi
-
-if [[ -d "$GOPATH" ]]; then
-    path+=("$GOPATH/bin")
-fi
-
-if [[ -d "$ANDROID_HOME" ]]; then
-    path+=("$ANDROID_HOME/platform-tools" "$ANDROID_HOME/tools" "$ANDROID_HOME/cmdline-tools/latest/bin")
-fi
-
-if [[ -d "$NDK_ROOT" ]]; then
-    path+=("$NDK_ROOT")
-fi
+prepend_path "$HOME/bin"
+append_path "$GOPATH/bin"
+append_path "$ANDROID_HOME/platform-tools"
+append_path "$ANDROID_HOME/tools"
+append_path "$ANDROID_HOME/cmdline-tools/latest/bin"
+append_path "$NDK_ROOT"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
@@ -49,7 +54,7 @@ if [[ -d "$CONDA_HOME" ]]; then
         if [ -f "${CONDA_HOME}/etc/profile.d/conda.sh" ]; then
             . "${CONDA_HOME}/etc/profile.d/conda.sh"
         else
-            path=("${CONDA_HOME}/bin" $path)
+            prepend_path "${CONDA_HOME}/bin"
         fi
     fi
     unset __conda_setup

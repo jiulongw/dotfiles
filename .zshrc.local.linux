@@ -4,6 +4,7 @@ source "$HOME/github/z/z.sh"
 export ANDROID_HOME=$HOME/android/sdk
 export NDK_ROOT=$ANDROID_HOME/ndk/25.2.9519653
 
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-export PATH=$PATH:$HOME/w/depot_tools
+append_path "/usr/local/go/bin"
+append_path "$HOME/go/bin"
+append_path "$ANDROID_HOME/cmdline-tools/latest/bin"
+append_path "$HOME/w/depot_tools"
