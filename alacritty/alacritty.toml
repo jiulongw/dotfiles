@@ -1,0 +1,30 @@
+import = [
+    # "~/.config/alacritty/themes/monokai_pro.toml"
+    "~/.config/alacritty/themes/gruvbox_dark.toml"
+]
+
+[font]
+size = 13
+
+[font.normal]
+family = "Monaspace Neon"
+style = "Regular"
+
+[font.bold]
+family = "Monaspace Neon"
+style = "Bold"
+
+[font.italic]
+family = "Monaspace Neon"
+style = "Italic"
+
+[font.bold_italic]
+family = "Monaspace Neon"
+style = "Bold Italic"
+
+[keyboard]
+bindings = [
+  { key = ".", mods = "Control", action = "ToggleViMode" },
+  { key = "Right", mods = "Alt", chars = "\u001BF" },
+  { key = "Left",  mods = "Alt", chars = "\u001BB" },
+]
