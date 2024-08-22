@@ -1,0 +1,5 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+ln -fs "$DIR/code/settings.json" "$HOME/Library/Application Support/Cursor/User/settings.json"

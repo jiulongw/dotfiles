@@ -1,0 +1,19 @@
+{
+    "window.commandCenter": true,
+    "workbench.colorTheme": "Monokai",
+    "git.openRepositoryInParentFolders": "always",
+    "editor.fontFamily": "Monaspace Argon Var, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 13,
+    "editor.fontLigatures": "'calt', 'liga'",
+    "editor.fontVariations": "'wght' 400",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "comment",
+                "settings": {
+                    "fontStyle": "italic",
+                }
+            }
+        ]
+    }
+}
