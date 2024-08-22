@@ -8,6 +8,7 @@ export ANDROID_HOME=$HOME/Library/Android/sdk
 export NDK_ROOT=$ANDROID_HOME/ndk/26.1.10909125
 
 prepend_path "/opt/homebrew/opt/node@18/bin"
+prepend_path "/opt/homebrew/opt/ruby/bin"
 
 # Build Vibe V1 android app requires openjdk@11
 export JAVA_HOME="/opt/homebrew/opt/openjdk@11"
@@ -19,3 +20,7 @@ append_path "$HOME/.cargo/bin"
 append_path "/opt/homebrew/opt/libpq/bin"
 
 export PICO_SDK_PATH=$HOME/github/pico-sdk
+
+if [[ -d "$HOME/.gem/bin" ]]; then
+  append_path "$HOME/.gem/bin"
+fi
