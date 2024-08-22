@@ -2,4 +2,19 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-ln -fs "$DIR/code/settings.json" "$HOME/Library/Application Support/Cursor/User/settings.json"
+if [[ `uname` == 'Linux' ]]; then
+  TARGET_DIR="$HOME/.config/Cursor/User"
+elif [[ `uname` == 'Darwin' ]]; then
+  TARGET_DIR="$HOME/Library/Application Support/Cursor/User"
+fi
+
+if [ -z "$TARGET_DIR" ]; then
+  echo "Unsupported OS"
+  exit 0
+fi
+
+if [ ! -d "$TARGET_DIR" ]; then
+  mkdir -p "$TARGET_DIR"
+fi
+
+ln -fs "$DIR/code/settings.json" "$TARGET_DIR/settings.json"
