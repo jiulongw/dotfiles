@@ -84,6 +84,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'fatih/vim-go'
 Plug 'hashivim/vim-terraform'
 Plug 'ianks/vim-tsx'
+Plug 'jpalardy/vim-slime'
 Plug 'leafgarland/typescript-vim'
 Plug 'mattn/vim-lsp-settings'
 Plug 'mileszs/ack.vim'
@@ -131,13 +132,6 @@ map <leader>co :botright cope<cr>
 map <leader>cn :cn<cr>
 map <leader>cp :cp<cr>
 map <leader>cc :cclose<cr>
-
-" Spell
-map <leader>ss :setlocal spell!<cr>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
 
 " Disable arrow keys
 noremap <Up> <NOP>
@@ -198,6 +192,23 @@ augroup lsp_install
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+
+let g:slime_target = "vimterminal"
+let g:slime_no_mappings = 1
+
+xmap <leader>s <Plug>SlimeRegionSend
+nmap <leader>s <Plug>SlimeMotionSend
+nmap <leader>ss <Plug>SlimeLineSend
+nmap <leader>sc <Plug>SlimeSendCell
+
+function! s:setup_slime_python()
+    let b:slime_cell_delimiter = "# --- #"
+    let b:slime_vimterminal_cmd = "python -i"
+    let b:slime_bracketed_paste = 1
+endfunction
+
+autocmd FileType python call s:setup_slime_python()
 
 " ============================================================
 
