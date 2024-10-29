@@ -15,5 +15,10 @@
                 }
             }
         ]
-    }
+    },
+    "editor.rulers": [
+        120
+    ],
+    "cmake.showOptionsMovedNotification": false,
+    "go.toolsManagement.autoUpdate": true
 }
