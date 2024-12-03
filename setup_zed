@@ -1,0 +1,11 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+TARGET_DIR="$HOME/.config/zed"
+if [ ! -d "$TARGET_DIR" ]; then
+  mkdir -p "$TARGET_DIR"
+fi
+
+ln -fs "$DIR/zed/keymap.json" "$TARGET_DIR/keymap.json"
+ln -fs "$DIR/zed/settings.json" "$TARGET_DIR/settings.json"
