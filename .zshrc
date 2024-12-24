@@ -161,6 +161,10 @@ ZSH_THEME_GIT_PROMPT_SUFFIX="%b%{$fg_bold[gray]%})%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[red]%}✱"
 
+if which fzf > /dev/null 2>&1; then
+  source <(fzf --zsh)
+fi
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 

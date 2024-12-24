@@ -77,14 +77,14 @@ let g:mapleader = ","
 " Plugins managed by https://github.com/junegunn/vim-plug
 call plug#begin()
 
-Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 Plug 'cespare/vim-toml'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'fatih/vim-go'
+Plug 'github/copilot.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'ianks/vim-tsx'
 Plug 'jpalardy/vim-slime'
+Plug 'junegunn/fzf'
 Plug 'leafgarland/typescript-vim'
 Plug 'mattn/vim-lsp-settings'
 Plug 'mileszs/ack.vim'
@@ -149,11 +149,7 @@ nmap <silent> <leader>yp :let @+ = expand("%:p")<CR>
 
 " Plugin settings
 
-let g:ctrlp_map = 'c-0' "vim cannot map ctrl-0, just to turn off ctrl-p which is used to paste from clipboard.
-let g:ctrlp_root_markers = ['TAGS', '.ctrlp', '.git', 'requirements.txt', 'package.json']
-let g:ctrlp_use_caching = 0
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-nnoremap <leader>p :CtrlP<cr>
+nnoremap <leader>p :FZF<cr>
 
 let g:ackprg = 'ag --vimgrep'
 nnoremap <leader>a :Ack!<space>
@@ -199,11 +195,11 @@ let g:slime_no_mappings = 1
 
 xmap <leader>s <Plug>SlimeRegionSend
 nmap <leader>s <Plug>SlimeMotionSend
-nmap <leader>ss <Plug>SlimeLineSend
-nmap <leader>sc <Plug>SlimeSendCell
+nmap <leader>sl <Plug>SlimeLineSend
+nmap <leader>ss <Plug>SlimeSendCell
 
 function! s:setup_slime_python()
-    let b:slime_cell_delimiter = "# --- #"
+    let b:slime_cell_delimiter = "# %%"
     let b:slime_vimterminal_cmd = "python -i"
     let b:slime_bracketed_paste = 1
 endfunction
