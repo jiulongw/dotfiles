@@ -5,15 +5,16 @@ source "$HOME/github/z/z.sh"
 
 export GOPATH=$HOME/go
 export ANDROID_HOME=$HOME/Library/Android/sdk
-export NDK_ROOT=$ANDROID_HOME/ndk/26.1.10909125
+export NDK_ROOT=$ANDROID_HOME/ndk/27.2.12479018
+append_path "$NDK_ROOT"
 
-prepend_path "/opt/homebrew/opt/node@18/bin"
 prepend_path "/opt/homebrew/opt/ruby/bin"
 
 # Build Vibe V1 android app requires openjdk@11
-export JAVA_HOME="/opt/homebrew/opt/openjdk@11"
-# Running sdkmanager requires openjdk@17. Use sdkman instead.
-alias sdkman="JAVA_HOME=/opt/homebrew/opt/openjdk@17 sdkmanager"
+# export JAVA_HOME="/opt/homebrew/opt/openjdk@11"
+export JAVA_HOME="/opt/homebrew/opt/openjdk@23"
+# Running sdkmanager requires newer openjdk. Use sdkman instead.
+alias sdkman="JAVA_HOME=/opt/homebrew/opt/openjdk@23 sdkmanager"
 
 append_path "$HOME/w/depot_tools"
 append_path "$HOME/.cargo/bin"
