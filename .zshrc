@@ -155,7 +155,12 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='vim'
 
-PROMPT='$(git_prompt_info)[%{$fg[red]%}%24<...<%~%<<%{$reset_color%}]%(!.#.$) '
+PROMPT='$(git_prompt_info)[%{$fg[red]%}%24<...<%~%<<%{$reset_color%}'
+if [[ -n $SSH_CONNECTION ]]; then
+  PROMPT+='%{$fg[cyan]%}@%m%{$reset_color%}'
+fi
+PROMPT+=']%(!.#.$) '
+
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[gray]%}(%{$fg_no_bold[yellow]%}%B"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%b%{$fg_bold[gray]%})%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_CLEAN=""
