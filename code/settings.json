@@ -2,7 +2,7 @@
     "window.commandCenter": true,
     "workbench.colorTheme": "Monokai",
     "git.openRepositoryInParentFolders": "always",
-    "editor.fontFamily": "Monaspace Argon Var, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontFamily": "Monaspace Argon, Menlo, Monaco, 'Courier New', monospace",
     "editor.fontSize": 13,
     "editor.fontLigatures": "'calt', 'liga'",
     "editor.fontVariations": "'wght' 400",
@@ -20,5 +20,6 @@
         120
     ],
     "cmake.showOptionsMovedNotification": false,
-    "go.toolsManagement.autoUpdate": true
+    "go.toolsManagement.autoUpdate": true,
+    "editor.inlayHints.enabled": "offUnlessPressed"
 }
