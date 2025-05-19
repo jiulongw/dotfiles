@@ -1,0 +1,20 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+if [[ `uname` == 'Linux' ]]; then
+  TARGET_DIR="$HOME/.config/Code/User"
+elif [[ `uname` == 'Darwin' ]]; then
+  TARGET_DIR="$HOME/Library/Application Support/Code/User"
+fi
+
+if [ -z "$TARGET_DIR" ]; then
+  echo "Unsupported OS"
+  exit 0
+fi
+
+if [ ! -d "$TARGET_DIR" ]; then
+  mkdir -p "$TARGET_DIR"
+fi
+
+ln -fs "$DIR/code/settings.json" "$TARGET_DIR/settings.json"
