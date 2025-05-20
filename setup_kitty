@@ -2,4 +2,4 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-ln -fns $DIR/kitty ~/.config/kitty
+ln -Fns $DIR/kitty ~/.config/kitty
