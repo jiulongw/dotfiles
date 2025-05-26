@@ -2,4 +2,6 @@ require("config.lazy")
 require("opt")
 require("keymap")
 
-vim.lsp.enable('lua_ls')
+if vim.g.neovide then
+  require("neovide")
+end

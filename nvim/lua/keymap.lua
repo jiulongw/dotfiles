@@ -45,4 +45,4 @@ vim.keymap.set("n", "<leader>yp", ":let @+ = expand(\"%:p\")<CR>", { noremap = t
 -- Plugins
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
-vim.keymap.set("n", "<C-k>", vim.cmd.CopilotChat)
+vim.keymap.set({"n", "x"}, "<C-k>", vim.cmd.CopilotChat)
