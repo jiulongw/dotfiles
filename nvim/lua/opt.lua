@@ -11,7 +11,7 @@ vim.opt.undofile = true
 vim.opt.wrap = false
 
 vim.opt.wildignorecase = true
-vim.opt.wildignore = vim.opt.wildignore + "*/tmp/*,*.so,*.swp,*.zip,*.rar,*.tar.*"
+vim.opt.wildignore = vim.opt.wildignore + "*.so,*.swp,*.zip,*.rar,*.tar.*"
 
 vim.opt.colorcolumn = "100"
 vim.opt.cursorline = true
@@ -41,11 +41,10 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.opt.autoread = true
 
-vim.opt.listchars="tab:▸ ,trail:·,eol:¬,nbsp:+"
+vim.opt.listchars = "tab:▸ ,trail:·,eol:¬,nbsp:+"
 vim.opt.list = true
 
 vim.opt.scrolloff = 6
 vim.opt.signcolumn = yes
 
 vim.opt.updatetime = 600
-
