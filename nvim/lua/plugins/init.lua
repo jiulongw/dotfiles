@@ -12,7 +12,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function () 
+    config = function()
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
@@ -54,7 +54,21 @@ return {
     branch = "0.1.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
-    }
+    },
+    config = function()
+      local telescope = require("telescope")
+      local actions = require("telescope.actions")
+      telescope.setup({
+        defaults = {
+          mappings = {
+            i = {
+              ["<esc>"] = actions.close,
+              ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+            },
+          },
+        },
+      })
+    end,
   },
   {
     "folke/which-key.nvim",
@@ -73,12 +87,7 @@ return {
   "mbbill/undotree",
   "tpope/vim-fugitive",
   {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "github/copilot.vim" },
-      { "nvim-lua/plenary.nvim" },
-    },
-    build = "make tiktoken",
-    opts = {},
+    "Exafunction/windsurf.vim",
+    event = "BufEnter",
   },
 }
