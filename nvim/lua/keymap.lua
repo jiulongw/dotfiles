@@ -35,14 +35,25 @@ vim.keymap.set("n", "<leader>cn", ":cn<cr>")
 vim.keymap.set("n", "<leader>cp", ":cp<cr>")
 vim.keymap.set("n", "<leader>cc", ":cclose<cr>")
 
+
 -- Switch to recent buffer
 vim.keymap.set("n", "<leader>b", ":b#<cr>", { noremap = true, silent = true })
+
 
 -- Full path to system clipboard
 vim.keymap.set("n", "<leader>yp", ":let @+ = expand(\"%:p\")<CR>", { noremap = true, silent = true })
 
 
+-- Cmd+c / Cmd+v in Neovide
+if vim.g.neovide then
+  vim.keymap.set('v', '<D-c>', '"+y') -- Copy
+  vim.keymap.set('n', '<D-v>', '"+P') -- Paste normal mode
+  vim.keymap.set('v', '<D-v>', '"+P') -- Paste visual mode
+  vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
+  vim.keymap.set('i', '<D-v>', '<C-R>+') -- Paste insert mode
+end
+
+
 -- Plugins
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
-vim.keymap.set({"n", "x"}, "<C-k>", vim.cmd.CopilotChat)
