@@ -28,7 +28,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     if not client:supports_method('textDocument/willSaveWaitUntil')
         and client:supports_method('textDocument/formatting') then
       local ft = vim.api.nvim_get_option_value('filetype', { buf = args.buf })
-      if ft == 'go' then
+      if ft == 'go' or ft == 'terraform' then
         vim.api.nvim_create_autocmd('BufWritePre', {
           group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
           buffer = args.buf,
@@ -60,6 +60,7 @@ local cmp = require('cmp')
 cmp.setup({
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'buffer' },
   },
   mapping = cmp.mapping.preset.insert({
     -- Enter key confirms completion item
