@@ -19,6 +19,7 @@ alias sdkman="JAVA_HOME=/opt/homebrew/opt/openjdk@23 sdkmanager"
 append_path "$HOME/w/depot_tools"
 append_path "$HOME/.cargo/bin"
 append_path "/opt/homebrew/opt/libpq/bin"
+append_path "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin"
 
 export PICO_SDK_PATH=$HOME/github/pico-sdk
 

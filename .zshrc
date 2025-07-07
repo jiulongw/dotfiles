@@ -38,6 +38,7 @@ alias em="emacsclient -a '' -nc"
 alias emk="emacsclient -e '(kill-emacs)'"
 alias icat="kitty +kitten icat"
 alias kssh="kitty +kitten ssh"
+alias k="kubectl"
 
 # >>> conda initialize >>>
 if [[ -d "/opt/homebrew/Caskroom/miniconda/base" ]]; then
