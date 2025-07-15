@@ -171,6 +171,12 @@ if which fzf > /dev/null 2>&1; then
   source <(fzf --zsh)
 fi
 
+# History
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
