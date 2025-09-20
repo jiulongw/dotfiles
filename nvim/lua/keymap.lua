@@ -44,14 +44,15 @@ vim.keymap.set("n", "<leader>b", ":b#<cr>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>yp", ":let @+ = expand(\"%:p\")<CR>", { noremap = true, silent = true })
 
 
--- Cmd+c / Cmd+v in Neovide
-if vim.g.neovide then
-  vim.keymap.set('v', '<D-c>', '"+y') -- Copy
-  vim.keymap.set('n', '<D-v>', '"+P') -- Paste normal mode
-  vim.keymap.set('v', '<D-v>', '"+P') -- Paste visual mode
-  vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
-  vim.keymap.set('i', '<D-v>', '<C-R>+') -- Paste insert mode
-end
+-- Cmd+c / Cmd+v
+vim.keymap.set("v", "<D-c>", '"+y') -- Copy
+vim.keymap.set("n", "<D-v>", '"+P') -- Paste normal mode
+vim.keymap.set("v", "<D-v>", '"+P') -- Paste visual mode
+vim.keymap.set("c", "<D-v>", "<C-R>+") -- Paste command mode
+vim.keymap.set("i", "<D-v>", "<C-R>+") -- Paste insert mode
+
+-- Cmd+s to save file
+vim.keymap.set("n", "<D-s>", ":w<CR>")
 
 
 -- Plugins

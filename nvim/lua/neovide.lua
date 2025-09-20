@@ -1,1 +1,1 @@
-vim.opt.guifont = "Monaspace Argon Var:h13"
+vim.opt.guifont = "Fira Code:h14"
