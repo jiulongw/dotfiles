@@ -19,6 +19,7 @@ function append_path() {
 [[ -a $HOME/.zshrc.local ]] && source ~/.zshrc.local
 
 prepend_path "$HOME/bin"
+prepend_path "$HOME/.local/bin"
 append_path "$GOPATH/bin"
 append_path "$ANDROID_HOME/platform-tools"
 append_path "$ANDROID_HOME/tools"
@@ -162,8 +163,8 @@ if [[ -n $SSH_CONNECTION ]]; then
 fi
 PROMPT+=']%(!.#.$) '
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[gray]%}(%{$fg_no_bold[yellow]%}%B"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%b%{$fg_bold[gray]%})%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_PREFIX="(%{$fg_no_bold[yellow]%}%B"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%b)%{$reset_color%} "
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[red]%}✱"
 
