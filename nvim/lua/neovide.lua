@@ -1,1 +1,1 @@
-vim.opt.guifont = "Fira Code:h14"
+vim.opt.guifont = "Iosevka:h15"

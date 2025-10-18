@@ -1,6 +1,6 @@
 # font-family = "Menlo"
-font-family = "Fira Code"
-# font-family = "Iosevka"
+# font-family = "Fira Code"
+# font-size = 14
 
-font-size = 14
-
+font-family = "Iosevka"
+font-size = 15

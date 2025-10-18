@@ -2,8 +2,8 @@
     "window.commandCenter": true,
     "workbench.colorTheme": "Monokai",
     "git.openRepositoryInParentFolders": "always",
-    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontSize": 14,
+    "editor.fontFamily": "Iosevka, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 15,
     "editor.fontLigatures": "'calt', 'liga'",
     "editor.tokenColorCustomizations": {
         "textMateRules": [
@@ -20,5 +20,6 @@
     ],
     "cmake.showOptionsMovedNotification": false,
     "go.toolsManagement.autoUpdate": true,
-    "editor.inlayHints.enabled": "offUnlessPressed"
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "python.defaultInterpreterPath": "/opt/homebrew/bin/python3"
 }
