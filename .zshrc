@@ -18,7 +18,6 @@ function append_path() {
 
 [[ -a $HOME/.zshrc.local ]] && source ~/.zshrc.local
 
-prepend_path "$HOME/bin"
 prepend_path "$HOME/.local/bin"
 append_path "$GOPATH/bin"
 append_path "$ANDROID_HOME/platform-tools"

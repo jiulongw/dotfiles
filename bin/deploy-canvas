@@ -1,0 +1,85 @@
+#!/usr/bin/env -S uv run --script
+# vi: ft=python
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#   "requests",
+# ]
+# ///
+import argparse
+import json
+import os
+import requests
+
+
+class GithubTokenError(Exception):
+    pass
+
+
+def get_github_token(args):
+    if args.token:
+        return args.token
+
+    if "GITHUB_TOKEN" in os.environ:
+        print("Using GITHUB_TOKEN from environment")
+        return os.environ["GITHUB_TOKEN"]
+
+    npmrc_path = os.path.expanduser("~/.npmrc")
+    if os.path.exists(npmrc_path):
+        with open(npmrc_path) as f:
+            for line in f:
+                if line.startswith("//npm.pkg.github.com/"):
+                    print("Using GITHUB_TOKEN from ~/.npmrc")
+                    return line.split("=")[1].strip()
+
+    raise GithubTokenError
+
+
+def main(args):
+    payload = {}
+
+    if args.next:
+        payload["is_next"] = "true"
+
+    if args.prebuilt:
+        payload["prebuilt_sha"] = args.prebuilt
+
+    body = {
+        "required_contexts": [],
+        "auto_merge": False,
+        "environment": args.app,
+        "ref": args.branch,
+        "payload": payload,
+    }
+
+    response = requests.post(
+        "https://api.github.com/repos/vibeus/inlight-board/deployments",
+        json=body,
+        headers={
+            "Accept": "application/vnd.github.v3+json",
+            "Authorization": f"token {get_github_token(args)}",
+        },
+    )
+
+    response.raise_for_status()
+    print(json.dumps(response.json(), indent=2))
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--branch", default="master", help="The branch to deploy")
+    parser.add_argument(
+        "--prebuilt", default=None, help="The canvas prebuilt SHA to deploy"
+    )
+    parser.add_argument("--next", action="store_true", help="Deploy to the public beta")
+    parser.add_argument(
+        "--token",
+        default=None,
+        help="The GitHub token to use. If not set, will use $GITHUB_TOKEN or token in ~/.npmrc",
+    )
+    parser.add_argument("app", help="The app to deploy. E.g. apps:web:dev")
+
+    try:
+        main(parser.parse_args())
+    except GithubTokenError:
+        parser.error("No GitHub token provided")

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+ln -fns /opt/homebrew/bin/nvim ~/.local/bin/vim
+ln -fns /opt/homebrew/bin/neovide ~/.local/bin/gvim
+ln -fns /opt/homebrew/bin/podman ~/.local/bin/docker
+ln -fns $DIR/bin/deploy-canvas ~/.local/bin/deploy-canvas
