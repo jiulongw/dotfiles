@@ -2,6 +2,11 @@ font-family = "Iosevka"
 font-size = 15
 theme = "Catppuccin Mocha"
 
+macos-icon = "custom"
+macos-custom-icon = "~/.config/ghostty/ghostty-original.icns"
+
 background-opacity = 0.9
 background-opacity-cells = true
 background-blur = true
+
+# keybind = cmd+;=goto_split:recent
