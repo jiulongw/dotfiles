@@ -5,8 +5,12 @@ theme = "Catppuccin Mocha"
 macos-icon = "custom"
 macos-custom-icon = "~/.config/ghostty/ghostty-original.icns"
 
-background-opacity = 0.9
+background-opacity = 0.95
 background-opacity-cells = true
 background-blur = true
+
+custom-shader =  "~/.config/ghostty/cursor_warp.glsl"
+# custom-shader =  "~/.config/ghostty/cursor_blaze.glsl"
+custom-shader-animation = always
 
 # keybind = cmd+;=goto_split:recent
