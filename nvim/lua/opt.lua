@@ -1,7 +1,7 @@
 local opt = vim.opt
 
 vim.opt.background = "dark"
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("catppuccin-macchiato")
 
 vim.opt.swapfile = false
 vim.opt.backup = false
