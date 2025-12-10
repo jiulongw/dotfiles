@@ -1,4 +1,4 @@
-font-family = "Iosevka"
+font-family = "Iosevka Term"
 font-size = 15
 theme = "Catppuccin Mocha"
 
@@ -12,5 +12,8 @@ background-blur = true
 custom-shader =  "~/.config/ghostty/cursor_warp.glsl"
 # custom-shader =  "~/.config/ghostty/cursor_blaze.glsl"
 custom-shader-animation = always
+
+# Sapphire in Catppuccin Mocha
+split-divider-color = #74c7ec
 
 # keybind = cmd+;=goto_split:recent
