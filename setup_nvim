@@ -5,13 +5,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 if [[ `uname` == 'Darwin' ]]; then
   ln -fns /opt/homebrew/bin/nvim ~/bin/vim
   ln -fns /opt/homebrew/bin/neovide ~/bin/gvim
+elif [[ `uname` == 'Linux' ]]; then
+  ln -fns /opt/nvim-linux-x86_64/bin/nvim ~/.local/bin/vim
 fi
 
 CONFIG_DIR=$HOME/.config/nvim
-if [ ! -d "$CONFIG_DIR" ]; then
-  mkdir -p "$CONFIG_DIR"
-fi
-
-# ln -fns $DIR/nvim/init.lua $CONFIG_DIR/init.lua
 ln -Fns $DIR/nvim $CONFIG_DIR
-

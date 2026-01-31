@@ -1,5 +1,5 @@
 source "/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-source "$HOME/github/z/z.sh"
+source "$HOME/dev/z/z.sh"
 
 export ANDROID_HOME=$HOME/android/sdk
 export NDK_ROOT=$ANDROID_HOME/ndk/25.2.9519653
