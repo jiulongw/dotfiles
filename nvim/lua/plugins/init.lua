@@ -16,34 +16,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function()
-      local configs = require("nvim-treesitter.configs")
-
-      configs.setup({
-        ensure_installed = { "c", "cpp", "lua", "javascript", "html", "css", "typescript", "go", "gomod", "gosum" },
-        sync_install = false,
-        highlight = { enable = true },
-        indent = { enable = true },
-        refactor = {
-          highlight_definitions = {
-            enable = true,
-            clear_on_cursor_move = true,
-          },
-        },
-      })
-    end
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-refactor",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
   },
   {
     "kylechui/nvim-surround",
