@@ -1,0 +1,50 @@
+# Eri — link router config.
+#
+# Place this file at one of:
+#   ~/.config/eri/config.toml                 (preferred)
+#   ~/Library/Application Support/Eri/config.toml
+#
+# Two ways to specify a target on a rule:
+#
+#   1. Define a [browsers.<id>] entry once and reference it by id from any
+#      number of rules. The id pins a (browser, profile, args) triple.
+#   2. Set `browser` directly to a bundle id (com.apple.Safari,
+#      com.google.Chrome, org.mozilla.firefox, com.microsoft.edgemac,
+#      com.brave.Browser, ...) and add inline `profile` / `args` if needed.
+#
+# `browser` on a rule is looked up in [browsers] first; on a miss it is
+# treated as a bundle id (the inline form). `profile` is passed as
+# --profile-directory=<value> for Chromium browsers. Rule-level `args` are
+# appended to any browser-level `args`.
+
+# Fallback when no rule matches.
+[default]
+browser = "chrome"
+
+[browsers.safari]
+browser = "com.apple.Safari"
+
+[browsers.chrome]
+browser = "com.google.Chrome"
+
+[browsers.chrome-personal]
+browser = "com.google.Chrome"
+profile = "jiulongw@gmail.com"
+
+[browsers.chrome-work]
+browser = "com.google.Chrome"
+profile = "jiulongw@vibe.us"
+
+# Rules are evaluated top-to-bottom; first match wins.
+# Each rule must match by exactly one of: host (glob), domain, host_regex,
+# url_regex. `domain` matches the value itself and any subdomain of it
+# (e.g. domain = "google.com" matches google.com and www.google.com but
+# not evilgoogle.com).
+
+[[rule]]
+domain = "shopify.com"
+browser = "chrome-work"
+
+[[rule]]
+domain = "hubspot.com"
+browser = "chrome-work"
