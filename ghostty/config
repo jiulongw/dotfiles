@@ -1,6 +1,9 @@
 font-family = "Iosevka Term"
 font-size = 15
+font-feature = "+ss12"
 theme = "Catppuccin Mocha"
+
+quit-after-last-window-closed = true
 
 macos-icon = "custom"
 macos-custom-icon = "~/.config/ghostty/ghostty-original.icns"
