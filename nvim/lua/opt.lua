@@ -48,3 +48,10 @@ vim.opt.scrolloff = 6
 vim.opt.signcolumn = yes
 
 vim.opt.updatetime = 600
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "beancount",
+  callback = function()
+    vim.treesitter.start()
+  end,
+})
