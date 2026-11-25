@@ -1,3 +1,4 @@
+autoload -Uz compinit && compinit
 typeset -aU path
 
 function prepend_path() {
@@ -16,7 +17,19 @@ function append_path() {
     fi
 }
 
-[[ -a $HOME/.zshrc.local ]] && source ~/.zshrc.local
+function source_if_exists() {
+    if [[ -r $1 ]]; then
+        source $1
+    fi
+}
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+source_if_exists "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+
+source_if_exists "$HOME/.zshrc.local"
+source_if_exists "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme"
 
 prepend_path "$HOME/.local/bin"
 append_path "$GOPATH/bin"
@@ -26,14 +39,20 @@ append_path "$ANDROID_HOME/cmdline-tools/latest/bin"
 append_path "$NDK_ROOT"
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
+source_if_exists "$NVM_DIR/nvm.sh" 
+source_if_exists "$NVM_DIR/bash_completion"
 
-[ -s "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
+source_if_exists "$HOME/.cargo/env"
 
 alias gd="git diff"
 alias gst="git status"
+alias glog="git log --oneline"
 alias k="kubectl"
+alias ls="eza --icons=always"
+
+# ---- Zoxide (better cd) ----
+eval "$(zoxide init zsh)"
+alias cd="z"
 
 # >>> conda initialize >>>
 if [[ -d "/opt/homebrew/Caskroom/miniconda/base" ]]; then
@@ -68,8 +87,17 @@ fi
 # History
 export HISTSIZE=1000000
 export SAVEHIST=1000000
-setopt hist_ignore_all_dups
+setopt share_history
+setopt hist_expire_dups_first
+setopt hist_ignore_dups
 setopt hist_ignore_space
+setopt hist_verify
+
+bindkey '^[[A' history-search-backward
+bindkey '^[[B' history-search-forward
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # repo-cli completion
-[[ -a $HOME/dev/dotfiles/repo-cli-completion.zsh ]] && source $HOME/dev/dotfiles/repo-cli-completion.zsh
+source_if_exists "$HOME/.config/repo-cli/repo-cli-completion.zsh"

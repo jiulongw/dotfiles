@@ -1,7 +1,7 @@
 prepend_path "/opt/homebrew/bin"
 
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source "$HOME/dev/z/z.sh"
+source_if_exists /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source_if_exists /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export GOPATH=$HOME/go
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -31,4 +31,4 @@ if [[ -d "$HOME/.gem/bin" ]]; then
   append_path "$HOME/.gem/bin"
 fi
 
-export CLOUDSDK_PYTHON=/opt/homebrew/Cellar/python@3.14/3.14.6/bin/python3
+export CLOUDSDK_PYTHON=/opt/homebrew/Cellar/python@3.14/3.14.10/bin/python3
