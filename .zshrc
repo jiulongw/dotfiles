@@ -29,7 +29,6 @@ function source_if_exists() {
 source_if_exists "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 
 source_if_exists "$HOME/.zshrc.local"
-source_if_exists "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme"
 
 prepend_path "$HOME/.local/bin"
 append_path "$GOPATH/bin"
@@ -44,9 +43,13 @@ source_if_exists "$NVM_DIR/bash_completion"
 
 source_if_exists "$HOME/.cargo/env"
 
+alias gaa="git add -A"
+alias gc="git commit"
 alias gd="git diff"
-alias gst="git status"
 alias glog="git log --oneline"
+alias gp="git push"
+alias gst="git status"
+
 alias k="kubectl"
 alias ls="eza --icons=always"
 

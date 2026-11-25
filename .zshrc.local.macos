@@ -1,5 +1,6 @@
 prepend_path "/opt/homebrew/bin"
 
+source_if_exists "/opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme"
 source_if_exists /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source_if_exists /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
