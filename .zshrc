@@ -1,4 +1,9 @@
 autoload -Uz compinit && compinit
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
 typeset -aU path
 
 function prepend_path() {
@@ -44,8 +49,11 @@ source_if_exists "$NVM_DIR/bash_completion"
 source_if_exists "$HOME/.cargo/env"
 
 alias gaa="git add -A"
+alias gb="git branch"
 alias gc="git commit"
+alias gco="git checkout"
 alias gd="git diff"
+alias gl="git pull"
 alias glog="git log --oneline"
 alias gp="git push"
 alias gst="git status"
@@ -96,8 +104,10 @@ setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_verify
 
-bindkey '^[[A' history-search-backward
-bindkey '^[[B' history-search-forward
+# bindkey '^[[A' history-search-backward
+# bindkey '^[[B' history-search-forward
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

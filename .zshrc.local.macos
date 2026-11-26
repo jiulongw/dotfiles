@@ -32,4 +32,4 @@ if [[ -d "$HOME/.gem/bin" ]]; then
   append_path "$HOME/.gem/bin"
 fi
 
-export CLOUDSDK_PYTHON=/opt/homebrew/Cellar/python@3.14/3.14.10/bin/python3
+export CLOUDSDK_PYTHON=/opt/homebrew/Cellar/python@3.14/3.14.10/bin/python3.14
