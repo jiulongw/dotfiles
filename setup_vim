@@ -1,7 +1,0 @@
-#!/bin/bash
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-ln -fns $DIR/.vimrc ~/.vimrc
-ln -fns $DIR/.vim ~/.vim
-vim +PlugInstall +qall

@@ -1,9 +1,0 @@
-#!/bin/bash
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-ln -fs $DIR/.bash_profile ~/.bash_profile
-ln -fs $DIR/.bashrc ~/.bashrc
-ln -fs $DIR/.inputrc ~/.inputrc
-ln -fs $DIR/.git-completion.bash ~/.git-completion.bash
-ln -fs $DIR/.git-prompt.sh ~/.git-prompt.sh
