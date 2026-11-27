@@ -2,9 +2,20 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-ln -fs "$DIR/.zshrc" "$HOME/.zshrc"
-if [[ `uname` == 'Linux' ]]; then
-  ln -fs "$DIR/.zshrc.local.linux" "$HOME/.zshrc.local"
-elif [[ `uname` == 'Darwin' ]]; then
-  ln -fs "$DIR/.zshrc.local.macos" "$HOME/.zshrc.local"
+CONFIG_DIR=$HOME/.config/zsh
+STATE_DIR=$HOME/.local/state/zsh
+
+cat <<EOF > "$HOME/.zshenv"
+if [[ -d "$CONFIG_DIR" ]]; then
+  export ZDOTDIR="$CONFIG_DIR"
 fi
+EOF
+
+if [ -d "$CONFIG_DIR" ] && [ ! -L "$CONFIG_DIR" ]; then
+  rmdir "$CONFIG_DIR" || exit 1
+fi
+
+mkdir -p "$(dirname "$CONFIG_DIR")"
+mkdir -p "$STATE_DIR"
+
+ln -nfs "$DIR/zsh" "$CONFIG_DIR"

@@ -1,1 +1,5 @@
 .DS_Store
+
+/zsh/local.zsh
+/zsh/.zsh_sessions
+/zsh/plugins
