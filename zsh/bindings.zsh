@@ -8,24 +8,29 @@ ZVM_VI_HIGHLIGHT_BACKGROUND=none
 ZVM_VI_HIGHLIGHT_FOREGROUND=none
 ZVM_VI_HIGHLIGHT_EXTRASTYLE=none
 
+autoload -Uz up-line-or-beginning-search
+autoload -Uz down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
 # zsh-vi-mode resets all bindings on init, so custom bindings
 # must be registered via this hook to survive.
 zvm_after_init() {
-  # Ctrl+Right -> move forward one word (^[[1;5C is the terminal escape code)
-  bindkey '^[[1;5C' forward-word
+  # Option+Right -> move forward one word
+  bindkey '^[[1;3C' forward-word
 
-  # Ctrl+Left -> move backward one word (^[[1;5D is the terminal escape code)
-  bindkey '^[[1;5D' backward-word
+  # Option+Left -> move backward one word
+  bindkey '^[[1;3D' backward-word
 
   # Ctrl+F -> fzf file picker (no hidden files)
   bindkey '^F' _fzf_file_no_hidden
 
   # Ctrl+\ -> toggle autosuggestions (useful for screen recordings)
-  bindkey '^\' autosuggest-toggle
+  # bindkey '^\' autosuggest-toggle
 
-  # Up/Down -> history search by substring (^[[A/^[[B are up/down arrow escape codes)
-  bindkey '^[[A' history-substring-search-up
-  bindkey '^[[B' history-substring-search-down
+  # Up/Down -> history search by prefix
+  bindkey '^[[A' up-line-or-beginning-search
+  bindkey '^[[B' down-line-or-beginning-search
 
   # Only overwrite Ctrl+R if fzf is installed and its widgets are loaded
   if zle -l | grep -q fzf-history-widget; then
