@@ -13,11 +13,12 @@ style = "bold white"
 format = "[$symbol]($style)"
 
 [os.symbols]
-Ubuntu  = "󰕈 "
-Artix   = "󰣇 "
-Arch    = "󰣇 "
-CachyOS = "󰣇 "
-Macos   = " "
+Ubuntu   = "󰕈 "
+Artix    = "󰣇 "
+Arch     = "󰣇 "
+CachyOS  = "󰣇 "
+Macos    = " "
+Raspbian = " "
 
 [hostname]
 ssh_only = true
