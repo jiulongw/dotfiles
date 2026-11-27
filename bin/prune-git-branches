@@ -1,0 +1,39 @@
+#!/bin/bash
+
+set -euo pipefail
+
+if ! repo_root=$(git rev-parse --show-toplevel 2>/dev/null || git rev-parse --absolute-git-dir 2>/dev/null); then
+  echo "Skipping: outside a Git repository."
+  exit 0
+fi
+
+branch_count=$(git for-each-ref --count=2 --format='%(refname)' refs/heads/ | wc -l)
+if (( branch_count < 2 )); then
+  echo "Skipping: fewer than two local branches."
+  exit 0
+fi
+
+exec codex exec --model gpt-6.2-astra -c 'model_reasoning_effort="low"' \
+  --approve-for-me --cd "$repo_root" - <<'PROMPT'
+Identify the repository's default branch. If you cannot determine it confidently, stop.
+Always keep the default branch, the branch checked out in the invoking worktree,
+and these exact branch names if present: release, live, prod, backend-canvas-next.
+
+For each other local branch, delete it only if its current tip has landed in the
+default branch. Check ancestry for ordinary merges. For squash merges, verify
+that the merged PR targeted the default branch and its final head SHA matches
+the local tip, or establish equivalent changes from Git history. A merged PR
+with the same branch name alone is insufficient. Keep uncertain branches.
+
+Before deleting a qualifying branch, inspect the linked worktree that has it
+checked out. Preserve primary, invoking, and locked worktrees. Keep the worktree
+if it has staged or unstaged changes or any non-ignored untracked files.
+Also inspect ignored files with `git ls-files --others --ignored --exclude-standard -z`
+from the worktree root. Ignored files inside directories named exactly .claude
+or node_modules at any depth are safe to delete with the worktree. If any other
+ignored file exists, keep the worktree. If all checks pass, remove the worktree
+with `git worktree remove`.
+If a worktree must be kept or removal fails, keep its branch. Never force worktree
+removal. Limit deletions to local branches and their linked worktrees. Report
+what you removed and briefly explain any branches you skipped.
+PROMPT

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+set -euo pipefail
+
+if ! repo_root=$(git rev-parse --show-toplevel 2>/dev/null || git rev-parse --absolute-git-dir 2>/dev/null); then
+  echo "Skipping: outside a Git repository."
+  exit 0
+fi
+
+if git -C "$repo_root" diff --staged --quiet --ignore-submodules=none --; then
+  echo "Skipping: no staged changes."
+  exit 0
+else
+  diff_status=$?
+  if (( diff_status != 1 )); then
+    exit "$diff_status"
+  fi
+fi
+
+exec codex exec --model gpt-6.2-astra -c 'model_reasoning_effort="low"' \
+  --approve-for-me --cd "$repo_root" - <<'PROMPT'
+Review the staged changes and read recent commit messages. Follow the
+repository's conventions for format and tone. Write a concise subject that
+describes the staged changes. Add a body when it helps explain the changes or
+their purpose. Keep every line of a detailed commit message under 80 characters.
+If the repository has no commit history, use a clear, imperative subject.
+
+Use `git commit` to create one commit from the existing index. Do not stage,
+unstage, or edit any files. Report the new commit hash and subject, or explain
+why the commit failed.
+PROMPT
