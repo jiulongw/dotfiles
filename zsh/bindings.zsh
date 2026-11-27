@@ -29,8 +29,10 @@ zvm_after_init() {
   # bindkey '^\' autosuggest-toggle
 
   # Up/Down -> history search by prefix
-  bindkey '^[[A' up-line-or-beginning-search
-  bindkey '^[[B' down-line-or-beginning-search
+  for prefix in '\e[' '\eO'; do
+    bindkey "${prefix}A" up-line-or-beginning-search
+    bindkey "${prefix}B" down-line-or-beginning-search
+  done
 
   # Only overwrite Ctrl+R if fzf is installed and its widgets are loaded
   if zle -l | grep -q fzf-history-widget; then
