@@ -96,6 +96,7 @@ append_path() {
 
 prepend_path "$HOME/.local/bin"
 prepend_path "/opt/homebrew/bin"
+prepend_path "/opt/nvim-linux-arm64/bin"
 
 # =========================================================
 # Smart directory navigation
